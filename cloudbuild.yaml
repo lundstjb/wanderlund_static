@@ -9,9 +9,27 @@ steps:
     entrypoint: "npm"
     args: ["run", "build"]
 
+  # List files for debugging
+  - name: "gcr.io/cloud-builders/gsutil"
+    entrypoint: "bash"
+    args: ["-c", "ls -R dist/"]
+
   # Upload to Cloud Storage
   - name: "gcr.io/cloud-builders/gsutil"
-    args: ["-m", "rsync", "-r", "-c", "-d", "dist", "gs://${_BUCKET_NAME}"]
+    args:
+      [
+        "-h",
+        "Cache-Control:no-cache, max-age=0",
+        "-m",
+        "rsync",
+        "-r",
+        "-c",
+        "-d",
+        "-x",
+        ".*\\.map$",
+        "dist",
+        "gs://${_BUCKET_NAME}",
+      ]
 
 substitutions:
   _BUCKET_NAME: "wanderlund-static-website" # Default value, can be overridden

@@ -9,31 +9,41 @@ interface Props {
 const { property } = Astro.props;
 ---
 
-<div class="card">
-  <div class="image-wrapper">
-    <img src={property.image} alt={property.title} loading="lazy" />
-    <div class="badge">{property.location}</div>
-  </div>
-  <div class="content">
-    {/* <div class="price">{property.price}</div> */}
-    <h3>{property.title}</h3>
-    <div class="amenities">
-      <span><Users size={16} /> {property.guests} Guests</span>
-      <span><House size={16} /> {property.bedrooms} BR</span>
-      <span
-        ><Bed size={16} />
-        {property.beds}
-        {property.beds > 1 ? "Beds" : "Bed"}</span
-      >
-      <span><Bath size={16} /> {property.bathrooms} BA</span>
+<a
+  href={`/wanderlund-static-website/properties/${property.slug}/index.html`}
+  class="card-link"
+>
+  <div class="card">
+    <div class="image-wrapper">
+      <img src={property.image} alt={property.title} loading="lazy" />
+      <div class="badge">{property.location}</div>
     </div>
-    <a href={`/properties/${property.slug}`} class="link">
-      View Details <ArrowRight size={16} />
-    </a>
+    <div class="content">
+      <h3>{property.title}</h3>
+      <div class="amenities">
+        <span><Users size={16} /> {property.guests} Guests</span>
+        <span><House size={16} /> {property.bedrooms} BR</span>
+        <span
+          ><Bed size={16} />
+          {property.beds}
+          {property.beds > 1 ? "Beds" : "Bed"}</span
+        >
+        <span><Bath size={16} /> {property.bathrooms} BA</span>
+      </div>
+      <div class="link">
+        View Details <ArrowRight size={16} />
+      </div>
+    </div>
   </div>
-</div>
+</a>
 
 <style>
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
   .card {
     background: var(--bg-primary);
     border: 1px solid var(--border);
@@ -42,9 +52,10 @@ const { property } = Astro.props;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
 
-  .card:hover {
+  .card-link:hover .card {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
   }
@@ -62,7 +73,7 @@ const { property } = Astro.props;
     transition: transform 0.6s ease;
   }
 
-  .card:hover .image-wrapper img {
+  .card-link:hover .image-wrapper img {
     transform: scale(1.05);
   }
 
@@ -132,7 +143,7 @@ const { property } = Astro.props;
     margin: 0 auto;
   }
 
-  .link:hover {
+  .card-link:hover .link {
     border-bottom: 1px solid var(--accent);
     gap: 0.75rem;
   }

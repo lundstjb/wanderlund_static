@@ -45,9 +45,10 @@ const { property } = Astro.props;
       <div class="container content-grid">
         <div class="main-content">
           <div class="breadcrumbs">
-            <a href="/">Home</a> / <a href="/properties">Properties</a> / {
-              property.title
-            }
+            <a href="/wanderlund-static-website/index.html">Home</a> / <a
+              href="/wanderlund-static-website/properties/index.html"
+              >Properties</a
+            > / {property.title}
           </div>
           <h1>{property.title}</h1>
           <p class="location">{property.location}</p>
