@@ -6,15 +6,17 @@ import Footer from "../components/Footer.astro";
 
 <Layout
   title="About Us"
-  description="Learn more about Wanderlund and our mission in property management."
+  description="Learn more about Wanderlund and our professional property management services."
 >
   <Header />
 
   <main>
-    <section class="section">
+    <!-- Intro Section -->
+    <section class="section intro-section">
       <div class="container">
         <div class="about-grid">
           <div class="about-content">
+            <span class="sub-header">Our Story</span>
             <h1>The Wanderlund Difference</h1>
             <p>
               Founded on a passion for hospitality and urban living, Wanderlund
@@ -22,25 +24,23 @@ import Footer from "../components/Footer.astro";
               desirable neighborhoods of Knoxville, TN.
             </p>
             <p>
-              We believe that a great stay is about more than just a place to
-              sleep—it's about connection, comfort, and local discovery. For
-              property owners, we provide peace of mind through rigorous
+              For property owners, we provide peace of mind through rigorous
               standards and a results-driven approach.
             </p>
 
-            <div class="values mt-8">
+            <div class="values mt-12">
               <div class="value">
                 <strong>Quality First</strong>
                 <p>
-                  We only manage properties that meet our high standards for
-                  design, comfort, and location.
+                  We manage properties that meet our high standards for design,
+                  comfort, and local character.
                 </p>
               </div>
               <div class="value">
                 <strong>Local Expertise</strong>
                 <p>
-                  Based in Knoxville, we know the market, the neighborhoods, and
-                  the best local partners.
+                  Based in Knoxville, we understand the local market and partner
+                  with the best regional vendors.
                 </p>
               </div>
             </div>
@@ -54,38 +54,196 @@ import Footer from "../components/Footer.astro";
         </div>
       </div>
     </section>
+
+    <!-- Management Section -->
+    <section class="section management-section bg-secondary" id="services">
+      <div class="container">
+        <div class="section-title">
+          <span class="sub-header">Property Management</span>
+          <h2>Maximize Your Revenue.</h2>
+          <p class="max-w-2xl">
+            Wanderlund provides full-service short-term rental management for
+            furnished residential properties in Knoxville.
+          </p>
+        </div>
+
+        <div class="values-grid mt-12">
+          <div class="value">
+            <strong>Listing Management</strong>
+            <p>
+              Professional listings on Airbnb and VRBO, including photography
+              and direct booking options.
+            </p>
+          </div>
+          <div class="value">
+            <strong>Dynamic Pricing</strong>
+            <p>
+              Demand-based pricing models to capture peak market rates and
+              maximize your occupancy.
+            </p>
+          </div>
+          <div class="value">
+            <strong>Guest Services</strong>
+            <p>
+              Round-the-clock support, automated check-in, and customized
+              digital guidebooks for every stay.
+            </p>
+          </div>
+          <div class="value">
+            <strong>Professional Turnovers</strong>
+            <p>
+              Complete coordination of cleaning, laundry, and property staging
+              to elite standards.
+            </p>
+          </div>
+          <div class="value">
+            <strong>Routine Inspections</strong>
+            <p>
+              Regular walkthroughs to ensure all appliances and features remain
+              in top-tier condition.
+            </p>
+          </div>
+          <div class="value">
+            <strong>Financial Reporting</strong>
+            <p>
+              Detailed monthly statements and real-time booking information.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing-section">
+      <div class="container">
+        <div class="pricing-grid">
+          <div>
+            <span class="sub-header">Structure</span>
+            <h2>Simple Pricing</h2>
+            <p>
+              Our fees are designed to align our success with yours. We only
+              make money when you do.
+            </p>
+
+            <div class="values mt-12">
+              <div class="value">
+                <strong>Management Fee</strong>
+                <p>
+                  20% of the accommodation rate, net of taxes and platform fees.
+                </p>
+              </div>
+              <div class="value">
+                <strong>Onboarding Fee</strong>
+                <p>
+                  A one-time setup covers photography, portal integration, and
+                  guidebook publishing.
+                </p>
+              </div>
+              <div class="value">
+                <strong>Supply Fee</strong>
+                <p>
+                  A flat monthly rate to keep your property stocked with
+                  essential amenities.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-secondary p-12 rounded-3xl">
+            <span class="sub-header">Owner Perks</span>
+            <h3>Peace of Mind</h3>
+            <div class="values mt-8">
+              <div class="value">
+                <strong>Unlimited Personal Use</strong>
+                <p>
+                  Owners maintain full access for personal stays with no
+                  black-out dates.
+                </p>
+              </div>
+              <div class="value">
+                <strong>Maintenance Authority</strong>
+                <p>
+                  We handle minor repairs immediately to protect your asset and
+                  the guest experience.
+                </p>
+              </div>
+              <div class="value">
+                <strong>Inventory Support</strong>
+                <p>
+                  We ensure your property is fully stocked with essentials like
+                  paper products, coffee, and soaps.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section text-center">
+      <div class="container max-w-2xl">
+        <h2>Ready to get started?</h2>
+        <p class="mb-10">
+          Contact us today for a free revenue projection for your property.
+        </p>
+        <a href="/contact" class="btn btn-primary btn-lg">Contact Us</a>
+      </div>
+    </section>
   </main>
 
   <Footer />
 </Layout>
 
 <style>
+  .intro-section {
+    padding-bottom: 2rem;
+  }
+
+  .sub-header {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-sans);
+  }
+
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 8rem;
     align-items: center;
   }
 
   .about-content h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     margin-bottom: 2.5rem;
+    font-weight: 500;
   }
 
   .about-content p {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     margin-bottom: 2rem;
     line-height: 1.8;
+    color: var(--text-secondary);
   }
 
   .values {
     display: grid;
-    gap: 3rem;
+    gap: 2.5rem;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
   }
 
   .value strong {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-bottom: 0.75rem;
     color: var(--text-primary);
     font-family: var(--font-serif);
@@ -94,7 +252,9 @@ import Footer from "../components/Footer.astro";
 
   .value p {
     font-size: 1.05rem;
+    line-height: 1.7;
     margin-bottom: 0;
+    color: var(--text-secondary);
   }
 
   .about-image img {
@@ -102,13 +262,62 @@ import Footer from "../components/Footer.astro";
     box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
   }
 
-  @media (max-width: 968px) {
-    .about-grid {
+  .management-section {
+    padding: 1rem 0;
+  }
+  .section-title h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: flex-start;
+  }
+
+  .pricing-section {
+    padding: 2rem 0;
+  }
+
+  .pricing-section h2,
+  .cta-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-section h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+  }
+
+  .btn-lg {
+    padding: 1.25rem 3.5rem;
+    font-size: 1rem;
+  }
+
+  .cta-section {
+    padding: 6rem 0;
+  }
+
+  .max-w-2xl {
+    max-width: 42rem;
+  }
+
+  @media (max-width: 1024px) {
+    .about-grid,
+    .pricing-grid {
       grid-template-columns: 1fr;
-      gap: 4rem;
+      gap: 5rem;
     }
 
-    .about-content h1 {
+    .about-content h1,
+    .section-title h2,
+    .pricing-section h2,
+    .cta-section h2 {
       font-size: 3rem;
     }
   }
