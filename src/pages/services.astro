@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Management Services"
+  description="Hassle-free property management services for vacation rentals."
+>
+  <Header />
+
+  <main>
+    <section class="section">
+      <div class="container text-center">
+        <h1>Property Management Services</h1>
+        <p>
+          Coming Soon - We are refining our management offerings to serve you
+          better.
+        </p>
+        <div class="mt-8">
+          <a href="/contact" class="btn btn-primary">Inquire About Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .text-center {
+    text-align: center;
+  }
+  .mt-8 {
+    margin-top: 2rem;
+  }
+  .btn {
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+</style>

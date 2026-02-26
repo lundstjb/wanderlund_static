@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import PropertyCard from "../../components/PropertyCard.astro";
+import { properties } from "../../data/properties";
+---
+
+<Layout
+  title="Our Properties"
+  description="Browse our curated collection of luxury vacation rentals."
+>
+  <Header />
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h1>Our Properties</h1>
+          <p>
+            Explore our hand-picked properties across Virginia, New York, and
+            Idaho.
+          </p>
+        </div>
+        <div class="property-grid">
+          {properties.map((property) => <PropertyCard property={property} />)}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .section-header {
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  .section-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+</style>

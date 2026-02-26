@@ -1,0 +1,88 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Contact Us"
+  description="Get in touch with Wanderlund for bookings or management inquiries."
+>
+  <Header />
+
+  <main>
+    <section class="section">
+      <div class="container max-w-md">
+        <h1 class="text-center">Contact Us</h1>
+        <p class="text-center mb-8">
+          Have a question? We'd love to hear from you.
+        </p>
+
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-full"
+            >Send Message</button
+          >
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .max-w-md {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .mb-8 {
+    margin-bottom: 2rem;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .form-group label {
+    font-weight: 600;
+  }
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: inherit;
+  }
+  .btn {
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--accent-foreground);
+    border: none;
+    cursor: pointer;
+  }
+  .w-full {
+    width: 100%;
+  }
+</style>
