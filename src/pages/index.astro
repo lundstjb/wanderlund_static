@@ -1,0 +1,191 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import PropertyCard from "../components/PropertyCard.astro";
+import { properties } from "../data/properties";
+---
+
+<Layout title="Boutique Vacation Stays">
+  <Header />
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>Curated Vacation Stays & Seamless Management</h1>
+        <p>
+          Discover hand-picked properties in the Shenandoah Valley, Hudson
+          Valley, and Teton Valley. Experience comfort, care, and quality.
+        </p>
+        <div class="hero-actions">
+          <a href="/properties" class="btn btn-primary">Browse Properties</a>
+          <a href="/services" class="btn btn-outline">Management Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Properties</h2>
+          <p>Expertly-curated homes for your next unforgettable getaway.</p>
+        </div>
+        <div class="property-grid">
+          {properties.map((property) => <PropertyCard property={property} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-secondary">
+      <div class="container">
+        <div class="services-grid">
+          <div class="service-content">
+            <h2>Stress-Free Vacation Rental Management</h2>
+            <p>
+              We handle everything from marketing and guest communication to
+              maintenance and housekeeping, so you can enjoy the benefits of
+              ownership without the hassle.
+            </p>
+            <ul class="check-list">
+              <li>Professional Photography & Listing Optimization</li>
+              <li>Guest Screening & 24/7 Support</li>
+              <li>Local Maintenance & Housekeeping Teams</li>
+              <li>Dynamic Pricing for Maximum Revenue</li>
+            </ul>
+            <a href="/services" class="btn btn-primary"
+              >Learn More About Management</a
+            >
+          </div>
+          <div class="service-image">
+            <img
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800"
+              alt="Property Management"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=1920");
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-foreground);
+    border: 1px solid var(--accent);
+  }
+
+  .btn-outline {
+    border: 1px solid white;
+    color: white;
+  }
+
+  .btn-outline:hover {
+    background: white;
+    color: black;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .bg-secondary {
+    background: var(--bg-secondary);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .check-list {
+    list-style: none;
+    margin: 2rem 0;
+  }
+
+  .check-list li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .check-list li::before {
+    content: "✓";
+    color: #10b981;
+    font-weight: 900;
+  }
+
+  .service-image img {
+    border-radius: var(--radius);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 968px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>

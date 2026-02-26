@@ -1,0 +1,20 @@
+steps:
+  # Install dependencies
+  - name: "node:18"
+    entrypoint: "npm"
+    args: ["install"]
+
+  # Build the project
+  - name: "node:18"
+    entrypoint: "npm"
+    args: ["run", "build"]
+
+  # Upload to Cloud Storage
+  - name: "gcr.io/cloud-builders/gsutil"
+    args: ["-m", "rsync", "-r", "-c", "-d", "dist", "gs://${_BUCKET_NAME}"]
+
+substitutions:
+  _BUCKET_NAME: "wanderlund-static-website" # Default value, can be overridden
+
+options:
+  logging: CLOUD_LOGGING_ONLY

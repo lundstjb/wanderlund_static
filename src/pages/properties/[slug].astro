@@ -1,0 +1,208 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { properties } from "../../data/properties";
+import { Users, Bed, Bath, Check } from "lucide-astro";
+
+export async function getStaticPaths() {
+  return properties.map((property) => ({
+    params: { slug: property.slug },
+    props: { property },
+  }));
+}
+
+const { property } = Astro.props;
+---
+
+<Layout title={property.title} description={property.description}>
+  <Header />
+
+  <main>
+    <section class="property-hero">
+      <div class="container hero-grid">
+        <div class="gallery">
+          <img src={property.image} alt={property.title} class="main-image" />
+        </div>
+        <div class="booking-card">
+          <div class="price-box">
+            <span class="price">{property.price}</span>
+          </div>
+          <div class="quick-info">
+            <span><Users size={18} /> {property.guests} Guests</span>
+            <span><Bed size={18} /> {property.bedrooms} Bedrooms</span>
+            <span><Bath size={18} /> {property.bathrooms} Bathrooms</span>
+          </div>
+          <button class="btn btn-primary w-full">Check Availability</button>
+          <p class="disclaimer">Direct booking saves you up to 15% in fees.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container content-grid">
+        <div class="main-content">
+          <div class="breadcrumbs">
+            <a href="/">Home</a> / <a href="/properties">Properties</a> / {
+              property.title
+            }
+          </div>
+          <h1>{property.title}</h1>
+          <p class="location">{property.location}</p>
+
+          <div class="description">
+            <h2>About this space</h2>
+            <p>{property.description}</p>
+          </div>
+
+          <div class="amenities-section">
+            <h2>Amenities</h2>
+            <div class="amenities-grid">
+              {
+                property.amenities.map((amenity) => (
+                  <div class="amenity">
+                    <Check size={18} class="text-green" />
+                    <span>{amenity}</span>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .property-hero {
+    padding: 2rem 0;
+    background: var(--bg-secondary);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+
+  .main-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .booking-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+  }
+
+  .price-box {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .quick-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+  }
+
+  .quick-info span {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .disclaimer {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+  }
+
+  .breadcrumbs {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumbs a:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .location {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+  }
+
+  .description {
+    margin-bottom: 4rem;
+  }
+
+  .description h2,
+  .amenities-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .amenity {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .text-green {
+    color: #10b981;
+  }
+
+  @media (max-width: 968px) {
+    .hero-grid,
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .booking-card {
+      position: static;
+    }
+  }
+</style>
