@@ -41,6 +41,20 @@ export const properties: Property[] = [
     image: '/images/properties/white_lily/3fd1c5db-d174-4376-b57d-88d78d10e04d.jpeg',
     description: 'This new modern 2 bedroom industrial condo in the heart of Old City is the ideal place for couples, friends,  wedding guests, or small families traveling together. Enjoy FREE PARKING, two king beds, a queen pull-out couch, an oversized living/dining area, one bathroom with dual sinks and a fully equipped kitchen.  Explore restaurants, bars, breweries, shops, Smokies/ One Knox games, UT sporting events and wedding/entertainment venues such as the Mill and Mine just steps from your front door.',
     amenities: ['Free Parking', 'Wi-Fi', 'Full Kitchen', 'Smart TVs', 'Walking Distance to Restaurants and Breweries', 'Walking Distance to Covenant Health Stadium']
+  },
+    {
+    id: '3',
+    slug: 'urban-wilderness-south-knoxville',
+    title: 'Urban Wilderness South Knoxville',
+    location: 'Knoxville, TN',
+    price: '$180/night',
+    guests: 8,
+    bedrooms: 2,
+    beds: 3,
+    bathrooms: 2,
+    image: '/images/properties/sevier/1b77c686ab592bd499ae754be8b14481-uncropped_scaled_within_1536_1152.jpg',
+    description: 'placeholder',
+    amenities: ['Free Parking', 'Wi-Fi', 'Full Kitchen', 'Smart TVs']
   }
 ];
 

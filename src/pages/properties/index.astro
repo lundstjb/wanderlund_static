@@ -17,10 +17,7 @@ import { properties } from "../../data/properties";
       <div class="container">
         <div class="section-header">
           <h1>Our Properties</h1>
-          <p>
-            Explore our hand-picked properties across Virginia, New York, and
-            Idaho.
-          </p>
+          <p>Explore our hand-picked properties across Knoxville, Tennessee.</p>
         </div>
         <div class="property-grid">
           {properties.map((property) => <PropertyCard property={property} />)}
@@ -34,18 +31,24 @@ import { properties } from "../../data/properties";
 
 <style>
   .section-header {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     text-align: center;
   }
 
   .section-header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header p {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .property-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 4rem;
   }
 </style>

@@ -72,11 +72,11 @@ import { properties } from "../data/properties";
 
 <style>
   .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url("https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=1920");
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+      url("/images/properties/jackson/EL8A9744.jpg");
     background-size: cover;
     background-position: center;
-    height: 80vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     color: white;
@@ -84,31 +84,39 @@ import { properties } from "../data/properties";
   }
 
   .hero-content {
-    max-width: 800px;
+    max-width: 900px;
   }
 
   .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    font-weight: 500;
   }
 
   .hero p {
     font-size: 1.25rem;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
+    font-family: var(--font-sans);
+    letter-spacing: 0.05em;
+    font-weight: 300;
   }
 
   .hero-actions {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: center;
   }
 
   .btn {
-    padding: 1rem 2rem;
-    border-radius: var(--radius);
-    font-weight: 600;
-    transition: all 0.2s;
+    padding: 1.1rem 2.5rem;
+    border-radius: 99px;
+    font-weight: 500;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   .btn-primary {
@@ -118,29 +126,34 @@ import { properties } from "../data/properties";
   }
 
   .btn-outline {
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.8);
     color: white;
+  }
+
+  .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   }
 
   .btn-outline:hover {
     background: white;
-    color: black;
+    color: var(--text-primary);
   }
 
   .section-header {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     text-align: center;
   }
 
   .section-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .property-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 3rem;
   }
 
   .bg-secondary {
@@ -149,43 +162,53 @@ import { properties } from "../data/properties";
 
   .services-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
     align-items: center;
+  }
+
+  .service-content h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
   }
 
   .check-list {
     list-style: none;
-    margin: 2rem 0;
+    margin: 3rem 0;
   }
 
   .check-list li {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
     color: var(--text-secondary);
+    font-size: 1.1rem;
   }
 
   .check-list li::before {
-    content: "✓";
-    color: #10b981;
-    font-weight: 900;
+    content: "—";
+    color: var(--accent);
+    font-weight: 300;
   }
 
   .service-image img {
     border-radius: var(--radius);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
   }
 
   @media (max-width: 968px) {
     .services-grid {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 4rem;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
+    }
+
+    .property-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

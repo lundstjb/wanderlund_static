@@ -28,8 +28,8 @@ import { Instagram, Facebook, Twitter } from "lucide-astro";
       </div>
       <div class="footer-contact">
         <h4>Contact Us</h4>
-        <p>Email: hello@wanderlund.com</p>
-        <p>Phone: +1 (555) 123-4567</p>
+        <p>Email: wanderlundventures@gmail.com</p>
+        <p>Phone: +1 (865) 712-1490</p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -41,39 +41,55 @@ import { Instagram, Facebook, Twitter } from "lucide-astro";
 <style>
   .footer {
     background: var(--bg-secondary);
-    padding: 5rem 0 2rem;
+    padding: 8rem 0 4rem;
     border-top: 1px solid var(--border);
   }
 
   .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 3rem;
+    gap: 6rem;
+    margin-bottom: 5rem;
   }
 
   .footer-info h3 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--font-sans);
+    font-weight: 600;
   }
 
   .footer-info p {
-    max-width: 320px;
-    margin-bottom: 1.5rem;
+    max-width: 360px;
+    margin-bottom: 2rem;
+    line-height: 1.8;
   }
 
   .socials {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     color: var(--text-secondary);
   }
 
+  .socials a {
+    transition: all 0.3s ease;
+  }
+
   .socials a:hover {
-    color: var(--text-primary);
+    color: var(--accent);
+    transform: translateY(-3px);
   }
 
   .footer h4 {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
   }
 
   .footer ul {
@@ -81,29 +97,34 @@ import { Instagram, Facebook, Twitter } from "lucide-astro";
   }
 
   .footer ul li {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   .footer ul a {
     color: var(--text-secondary);
-    transition: color 0.2s;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
   }
 
   .footer ul a:hover {
-    color: var(--text-primary);
+    color: var(--accent);
+    padding-left: 0.5rem;
   }
 
   .footer-bottom {
-    padding-top: 2rem;
+    padding-top: 3rem;
     border-top: 1px solid var(--border);
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   @media (max-width: 768px) {
     .footer-grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 4rem;
     }
   }
 </style>

@@ -24,13 +24,14 @@ import { Home } from "lucide-astro";
 
 <style>
   .header {
-    height: 80px;
+    height: 90px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
-    background: var(--bg-primary);
+    background: rgba(243, 239, 231, 0.8);
+    backdrop-filter: blur(10px);
     z-index: 100;
   }
 
@@ -43,22 +44,27 @@ import { Home } from "lucide-astro";
   .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.5rem;
-    font-weight: 700;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
     color: var(--text-primary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: var(--font-sans);
   }
 
   .nav ul {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .nav a {
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-secondary);
-    transition: color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   .nav a:hover {
@@ -66,20 +72,24 @@ import { Home } from "lucide-astro";
   }
 
   .btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--radius);
-    font-weight: 600;
-    transition: transform 0.2s, opacity 0.2s;
+    padding: 0.8rem 1.75rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
   }
 
   .btn-primary {
     background: var(--accent);
     color: var(--accent-foreground);
+    border: 1px solid var(--accent);
   }
 
   .btn:hover {
-    transform: translateY(-1px);
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(187, 146, 78, 0.2);
   }
 
   @media (max-width: 768px) {
