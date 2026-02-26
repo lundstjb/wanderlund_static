@@ -24,7 +24,8 @@ const { property } = Astro.props;
         <div class="gallery">
           <img src={property.image} alt={property.title} class="main-image" />
         </div>
-        <div class="booking-card">
+        {
+          /* <div class="booking-card">
           <div class="price-box">
             <span class="price">{property.price}</span>
           </div>
@@ -35,7 +36,8 @@ const { property } = Astro.props;
           </div>
           <button class="btn btn-primary w-full">Check Availability</button>
           <p class="disclaimer">Direct booking saves you up to 15% in fees.</p>
-        </div>
+        </div> */
+        }
       </div>
     </section>
 

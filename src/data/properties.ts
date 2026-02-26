@@ -6,6 +6,7 @@ export interface Property {
   price: string;
   guests: number;
   bedrooms: number;
+  beds: number;
   bathrooms: number;
   image: string;
   description: string;
@@ -15,41 +16,31 @@ export interface Property {
 export const properties: Property[] = [
   {
     id: '1',
-    slug: 'modern-mountain-retreat',
-    title: 'Modern Mountain Retreat',
-    location: 'Shenandoah Valley, VA',
+    slug: 'jackson-flat-old-city-knoxville',
+    title: 'Jackson Flat Old City Knoxville',
+    location: 'Knoxville, TN',
     price: '$250/night',
     guests: 6,
-    bedrooms: 3,
+    bedrooms: 2,
+    beds: 2,
     bathrooms: 2,
-    image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=800',
-    description: 'A stunning modern retreat nestled in the heart of the Shenandoah Valley. Perfect for families looking for a peaceful getaway.',
-    amenities: ['Hot Tub', 'Wi-Fi', 'Full Kitchen', 'Mountain View', 'Fire Pit']
+    image: '/images/properties/jackson/EL8A9726.jpg',
+    description: "Discover the charm of downtown in our new beautifully appointed 2BR/2BA condo in the historic JFG Flats building, situated in the heart of Old City. Enjoy FREE PARKING, a king & queen bed, smart TVs in each room, & fully equipped kitchen. Steps from your door, you'll discover acclaimed restaurants, lively breweries & bars and the new Covenant Health Stadium. Whether you're in town for a weekend getaway, UT sporting event, wedding, or exploring Knoxville, our condo offers the ideal urban retreat!",
+    amenities: ['Free Parking', 'Wi-Fi', 'Full Kitchen', 'Smart TVs', 'Walking Distance to Restaurants and Breweries', 'Walking Distance to Covenant Health Stadium']
   },
   {
     id: '2',
-    slug: 'cozy-hudson-cabin',
-    title: 'Cozy Hudson Cabin',
-    location: 'Hudson Valley, NY',
+    slug: 'white-lily-old-city-knoxville',
+    title: 'White Lily Old City Knoxville',
+    location: 'Knoxville, TN',
     price: '$180/night',
-    guests: 4,
+    guests: 6,
     bedrooms: 2,
+    beds: 3,
     bathrooms: 1,
-    image: 'https://images.unsplash.com/photo-1449156001437-37c64b6e50b7?auto=format&fit=crop&q=80&w=800',
-    description: 'Experience the magic of the Hudson Valley in this charming, hand-crafted log cabin. Close to hiking trails and local farm stands.',
-    amenities: ['Fireplace', 'Pet Friendly', 'Deck', 'Hiking Trails', 'Gas Grill']
-  },
-  {
-    id: '3',
-    slug: 'teton-luxury-villa',
-    title: 'Teton Luxury Villa',
-    location: 'Driggs, ID',
-    price: '$450/night',
-    guests: 10,
-    bedrooms: 5,
-    bathrooms: 4,
-    image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800',
-    description: 'Premier luxury living in Teton Valley. This expansive villa offers breathtaking views and top-of-the-line amenities for groups.',
-    amenities: ['Chef\'s Kitchen', 'Theater Room', 'Sauna', 'Ski-in/Ski-out', 'Panoramic Views']
+    image: '/images/properties/white_lily/3fd1c5db-d174-4376-b57d-88d78d10e04d.jpeg',
+    description: 'This new modern 2 bedroom industrial condo in the heart of Old City is the ideal place for couples, friends,  wedding guests, or small families traveling together. Enjoy FREE PARKING, two king beds, a queen pull-out couch, an oversized living/dining area, one bathroom with dual sinks and a fully equipped kitchen.  Explore restaurants, bars, breweries, shops, Smokies/ One Knox games, UT sporting events and wedding/entertainment venues such as the Mill and Mine just steps from your front door.',
+    amenities: ['Free Parking', 'Wi-Fi', 'Full Kitchen', 'Smart TVs', 'Walking Distance to Restaurants and Breweries', 'Walking Distance to Covenant Health Stadium']
   }
 ];
+

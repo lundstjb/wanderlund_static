@@ -1,6 +1,6 @@
 ---
 import type { Property } from "../data/properties";
-import { Users, Bed, Bath, ArrowRight } from "lucide-astro";
+import { Users, Bed, Bath, ArrowRight, House } from "lucide-astro";
 
 interface Props {
   property: Property;
@@ -15,11 +15,16 @@ const { property } = Astro.props;
     <div class="badge">{property.location}</div>
   </div>
   <div class="content">
-    <div class="price">{property.price}</div>
+    {/* <div class="price">{property.price}</div> */}
     <h3>{property.title}</h3>
     <div class="amenities">
       <span><Users size={16} /> {property.guests} Guests</span>
-      <span><Bed size={16} /> {property.bedrooms} BR</span>
+      <span><House size={16} /> {property.bedrooms} BR</span>
+      <span
+        ><Bed size={16} />
+        {property.beds}
+        {property.beds > 1 ? "Beds" : "Bed"}</span
+      >
       <span><Bath size={16} /> {property.bathrooms} BA</span>
     </div>
     <a href={`/properties/${property.slug}`} class="link">

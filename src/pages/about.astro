@@ -12,12 +12,46 @@ import Footer from "../components/Footer.astro";
 
   <main>
     <section class="section">
-      <div class="container text-center">
-        <h1>About Wanderlund</h1>
-        <p>
-          Wanderlund is dedicated to providing premium property management and
-          curated vacation stays.
-        </p>
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <h1>The Wanderlund Difference</h1>
+            <p>
+              Founded on a passion for hospitality and urban living, Wanderlund
+              specializes in managing boutique vacation stays in the most
+              desirable neighborhoods of Knoxville, TN.
+            </p>
+            <p>
+              We believe that a great stay is about more than just a place to
+              sleep—it's about connection, comfort, and local discovery. For
+              property owners, we provide peace of mind through rigorous
+              standards and a results-driven approach.
+            </p>
+
+            <div class="values mt-8">
+              <div class="value">
+                <strong>Quality First</strong>
+                <p>
+                  We only manage properties that meet our high standards for
+                  design, comfort, and location.
+                </p>
+              </div>
+              <div class="value">
+                <strong>Local Expertise</strong>
+                <p>
+                  Based in Knoxville, we know the market, the neighborhoods, and
+                  the best local partners.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800"
+              alt="Boutique Interior"
+            />
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -26,7 +60,50 @@ import Footer from "../components/Footer.astro";
 </Layout>
 
 <style>
-  .text-center {
-    text-align: center;
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-content h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .about-content p {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .values {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .value strong {
+    display: block;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .value p {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  .about-image img {
+    border-radius: var(--radius);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 968px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
   }
 </style>
