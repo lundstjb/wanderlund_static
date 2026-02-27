@@ -267,6 +267,10 @@ import { Home } from "lucide-astro";
   }
 
   @media (max-width: 1024px) {
+    .header {
+      height: 70px !important;
+    }
+
     .nav,
     .cta {
       display: none !important;
@@ -274,6 +278,8 @@ import { Home } from "lucide-astro";
 
     .menu-toggle {
       display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
       opacity: 1 !important;
       visibility: visible !important;
     }

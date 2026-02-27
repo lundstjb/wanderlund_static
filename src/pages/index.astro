@@ -213,10 +213,23 @@ import { properties } from "../data/properties";
     .hero {
       height: 70vh !important;
       min-height: 500px !important;
+      padding: 0 1.5rem;
     }
 
     .hero h1 {
       font-size: clamp(2.5rem, 8vw, 4rem) !important;
+    }
+
+    .hero-actions {
+      flex-direction: column !important;
+      gap: 1rem !important;
+      width: 100% !important;
+      max-width: 400px !important;
+      margin: 0 auto !important;
+    }
+
+    .hero-actions .btn {
+      width: 100% !important;
     }
 
     .property-grid {
