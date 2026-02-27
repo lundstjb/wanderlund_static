@@ -60,6 +60,18 @@ img {
   }
 }
 
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
 .section {
   padding: 4rem 0;
 }
@@ -98,4 +110,27 @@ h3 {
 p {
   color: var(--text-secondary);
   font-weight: 400;
+}
+
+/* GLOBAL MOBILE OVERRIDES */
+@media screen and (max-width: 1024px) {
+  /* Edge-to-Edge and Single Column Fallbacks */
+  .property-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card, .card img {
+    border-radius: 0 !important;
+  }
+
+  .service-image img, .main-image {
+    border-radius: 0 !important;
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: -1.5rem !important;
+  }
+
+  .amenities-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

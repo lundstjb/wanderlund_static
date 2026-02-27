@@ -175,33 +175,20 @@ const { property } = Astro.props;
     color: var(--accent);
   }
 
-  @media (max-width: 968px) {
+  @media (max-width: 1024px) {
     .content-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-
-    .property-hero {
-      padding: 2rem 0;
+      grid-template-columns: 1fr !important;
     }
 
     .main-image {
-      aspect-ratio: 4 / 3;
+      border-radius: 0 !important;
+      margin: 0 -1.5rem !important;
+      width: calc(100% + 3rem) !important;
+      max-width: none !important;
     }
 
-    .location {
-      margin-bottom: 2.5rem;
-    }
-
-    .description,
-    .amenities-section {
-      margin-bottom: 3.5rem;
-    }
-  }
-
-  @media (max-width: 480px) {
     .amenities-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr !important;
     }
   }
 </style>

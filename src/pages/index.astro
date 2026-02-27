@@ -204,43 +204,50 @@ import { properties } from "../data/properties";
     box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
   }
 
-  @media (max-width: 968px) {
+  @media screen and (max-width: 1024px) {
     .services-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr !important;
       gap: 4rem;
     }
 
     .hero {
-      height: 70vh;
-      min-height: 500px;
+      height: 70vh !important;
+      min-height: 500px !important;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: clamp(2.5rem, 8vw, 4rem) !important;
     }
 
     .property-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+
+    .service-image img {
+      border-radius: 0 !important;
+      width: 100vw !important;
+      max-width: none !important;
+      margin-left: -1.5rem !important;
     }
   }
 
-  @media (max-width: 480px) {
+  @media screen and (max-width: 480px) {
     .hero-actions {
-      flex-direction: column;
+      flex-direction: column !important;
       gap: 1rem;
     }
 
     .hero-actions .btn {
-      width: 100%;
+      width: 100% !important;
     }
 
     .section-header h2 {
-      font-size: 2.5rem;
+      font-size: 2.5rem !important;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 2.5rem !important;
     }
   }
 </style>

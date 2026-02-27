@@ -314,14 +314,12 @@ import Footer from "../components/Footer.astro";
       gap: 3rem;
     }
 
-    .about-content h1 {
-      margin-bottom: 2rem;
-    }
-  }
-
-  @media (max-width: 768px) {
     .intro-section {
-      padding-top: 3rem;
+      padding-top: 2rem;
+    }
+
+    .about-content h1 {
+      font-size: 3rem;
     }
 
     .about-content p {
@@ -334,6 +332,12 @@ import Footer from "../components/Footer.astro";
 
     .pricing-section .p-12 {
       padding: 2rem;
+    }
+
+    .section-title h2,
+    .pricing-section h2,
+    .cta-section h2 {
+      font-size: 2.75rem;
     }
   }
 </style>
