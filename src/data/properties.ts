@@ -73,7 +73,7 @@ export const properties: Property[] = [
       "Walking Distance to Restaurants and Breweries",
       "Walking Distance to Covenant Health Stadium",
     ],
-    airbnbUrl: "https://www.airbnb.com/rooms/123456789",
+    airbnbUrl: "https://www.airbnb.com/rooms/1421115194865410926",
   },
   {
     id: "2",
@@ -163,7 +163,7 @@ export const properties: Property[] = [
       "Walking Distance to Restaurants and Breweries",
       "Walking Distance to Covenant Health Stadium",
     ],
-    airbnbUrl: "https://www.airbnb.com/rooms/123456789",
+    airbnbUrl: "https://www.airbnb.com/rooms/1618479981136128375",
   },
   {
     id: "3",
@@ -184,6 +184,6 @@ export const properties: Property[] = [
     ],
     description: "placeholder",
     amenities: ["Free Parking", "Wi-Fi", "Full Kitchen", "Smart TVs"],
-    airbnbUrl: "https://www.airbnb.com/rooms/123456789",
+    airbnbUrl: "",
   },
 ];
