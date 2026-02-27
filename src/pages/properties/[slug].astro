@@ -25,18 +25,24 @@ const { property } = Astro.props;
           <img src={property.image} alt={property.title} class="main-image" />
         </div>
         {
-          /* <div class="booking-card">
-          <div class="price-box">
-            <span class="price">{property.price}</span>
-          </div>
-          <div class="quick-info">
-            <span><Users size={18} /> {property.guests} Guests</span>
-            <span><Bed size={18} /> {property.bedrooms} Bedrooms</span>
-            <span><Bath size={18} /> {property.bathrooms} Bathrooms</span>
-          </div>
-          <button class="btn btn-primary w-full">Check Availability</button>
-          <p class="disclaimer">Direct booking saves you up to 15% in fees.</p>
-        </div> */
+          (
+            <div class="booking-card">
+              <div class="quick-info">
+                <span>
+                  <Users size={18} /> {property.guests} Guests
+                </span>
+                <span>
+                  <Bed size={18} /> {property.bedrooms} Bedrooms
+                </span>
+                <span>
+                  <Bath size={18} /> {property.bathrooms} Bathrooms
+                </span>
+              </div>
+              <a class="btn btn-primary w-full" href={property.airbnbUrl}>
+                Check Availability
+              </a>
+            </div>
+          )
         }
       </div>
     </section>
@@ -172,6 +178,10 @@ const { property } = Astro.props;
 
   .text-green {
     color: var(--accent);
+  }
+
+  .quick-info {
+    margin-bottom: 2rem;
   }
 
   @media (max-width: 1024px) {

@@ -1,7 +1,7 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
+// // @ts-check
+// import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({
-  base: '/www.wanderlund.com/'
-});
+// // https://astro.build/config
+// export default defineConfig({
+//   base: '/www.wanderlund.com/'
+// });
