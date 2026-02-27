@@ -9,10 +9,7 @@ interface Props {
 const { property } = Astro.props;
 ---
 
-<a
-  href={`/www.wanderlund.com/properties/${property.slug}/index.html`}
-  class="card-link"
->
+<a href={`/properties/${property.slug}/index.html`} class="card-link">
   <div class="card">
     <div class="image-wrapper">
       <img src={property.image} alt={property.title} loading="lazy" />
