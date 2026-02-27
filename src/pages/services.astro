@@ -2,6 +2,20 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import {
+  TrendingUp,
+  LineChart,
+  Star,
+  Sparkles,
+  ClipboardCheck,
+  PieChart,
+  DollarSign,
+  Rocket,
+  Package,
+  Home,
+  Wrench,
+  ClipboardList,
+} from "lucide-astro";
 ---
 
 <Layout
@@ -24,6 +38,7 @@ import Footer from "../components/Footer.astro";
 
         <div class="services-grid mt-12">
           <div class="service-card">
+            <div class="icon-wrapper"><TrendingUp size={32} /></div>
             <h3>Listing Optimization</h3>
             <p>
               Professional listings on Airbnb and VRBO, including photography
@@ -31,6 +46,7 @@ import Footer from "../components/Footer.astro";
             </p>
           </div>
           <div class="service-card">
+            <div class="icon-wrapper"><LineChart size={32} /></div>
             <h3>Dynamic Pricing</h3>
             <p>
               Demand-based pricing models to capture peak market rates and
@@ -38,6 +54,7 @@ import Footer from "../components/Footer.astro";
             </p>
           </div>
           <div class="service-card">
+            <div class="icon-wrapper"><Star size={32} /></div>
             <h3>5-Star Guest Support</h3>
             <p>
               Round-the-clock support, automated check-in, and customized
@@ -45,6 +62,7 @@ import Footer from "../components/Footer.astro";
             </p>
           </div>
           <div class="service-card">
+            <div class="icon-wrapper"><Sparkles size={32} /></div>
             <h3>Professional Turnover</h3>
             <p>
               Complete coordination of cleaning, laundry, and property staging
@@ -52,6 +70,7 @@ import Footer from "../components/Footer.astro";
             </p>
           </div>
           <div class="service-card">
+            <div class="icon-wrapper"><ClipboardCheck size={32} /></div>
             <h3>Routine Inspections</h3>
             <p>
               Regular walkthroughs to ensure all appliances and features remain
@@ -59,6 +78,7 @@ import Footer from "../components/Footer.astro";
             </p>
           </div>
           <div class="service-card">
+            <div class="icon-wrapper"><PieChart size={32} /></div>
             <h3>Financial Reporting</h3>
             <p>
               Detailed monthly statements and real-time booking information.
@@ -80,12 +100,14 @@ import Footer from "../components/Footer.astro";
 
         <div class="services-grid mt-12">
           <div class="service-card">
+            <div class="icon-wrapper"><DollarSign size={32} /></div>
             <h3>Management Fee</h3>
             <p>
               20% of the accommodation rate, net of taxes and platform fees.
             </p>
           </div>
           <div class="service-card">
+            <div class="icon-wrapper"><Rocket size={32} /></div>
             <h3>Onboarding Fee</h3>
             <p>
               A one-time setup covers photography, portal integration, and
@@ -93,6 +115,7 @@ import Footer from "../components/Footer.astro";
             </p>
           </div>
           <div class="service-card">
+            <div class="icon-wrapper"><Package size={32} /></div>
             <h3>Supply Fee</h3>
             <p>
               A flat monthly rate to keep your property stocked with essential
@@ -115,6 +138,7 @@ import Footer from "../components/Footer.astro";
 
         <div class="services-grid mt-12">
           <div class="service-card">
+            <div class="icon-wrapper"><Home size={32} /></div>
             <h3>Unlimited Personal Use</h3>
             <p>
               Owners maintain full access for personal stays with no black-out
@@ -122,6 +146,7 @@ import Footer from "../components/Footer.astro";
             </p>
           </div>
           <div class="service-card">
+            <div class="icon-wrapper"><Wrench size={32} /></div>
             <h3>Maintenance Authority</h3>
             <p>
               We handle minor repairs immediately to protect your asset and the
@@ -129,6 +154,7 @@ import Footer from "../components/Footer.astro";
             </p>
           </div>
           <div class="service-card">
+            <div class="icon-wrapper"><ClipboardList size={32} /></div>
             <h3>Inventory Support</h3>
             <p>
               We ensure your property is fully stocked with essentials like
@@ -194,15 +220,40 @@ import Footer from "../components/Footer.astro";
     border-radius: var(--radius);
     border: 1px solid var(--border);
     height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon-wrapper {
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
   }
 
   .bg-secondary .service-card {
     background: var(--bg-primary);
   }
 
+  .bg-secondary .icon-wrapper {
+    background: var(--bg-secondary);
+  }
+
   /* When not in a bg-secondary block, standard background is fine, but lets ensure distinctiveness */
   section:not(.bg-secondary) .service-card {
     background: var(--bg-secondary);
+  }
+
+  section:not(.bg-secondary) .icon-wrapper {
+    background: var(--bg-primary);
   }
 
   .service-card h3 {
