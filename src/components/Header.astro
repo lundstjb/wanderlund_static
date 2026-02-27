@@ -12,7 +12,8 @@ import { Home } from "lucide-astro";
       <ul>
         <li>
           <a href="/wanderlund-static-website/properties/index.html"
-            >Properties</a>
+            >Properties</a
+          >
         </li>
         <li>
           <a href="/wanderlund-static-website/about/index.html#services"
@@ -25,14 +26,69 @@ import { Home } from "lucide-astro";
         </li>
       </ul>
     </nav>
+
     <div class="cta">
       <a
         href="/wanderlund-static-website/contact/index.html"
         class="btn btn-primary">Book a Stay</a
       >
     </div>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+      <span class="hamburger"></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-nav">
+      <ul>
+        <li>
+          <a href="/wanderlund-static-website/properties/index.html"
+            >Properties</a
+          >
+        </li>
+        <li>
+          <a href="/wanderlund-static-website/about/index.html#services"
+            >Services</a
+          >
+        </li>
+        <li><a href="/wanderlund-static-website/about/index.html">About</a></li>
+        <li>
+          <a href="/wanderlund-static-website/contact/index.html">Contact</a>
+        </li>
+        <li class="mt-8">
+          <a
+            href="/wanderlund-static-website/contact/index.html"
+            class="btn btn-primary w-full text-center">Book a Stay</a
+          >
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const body = document.body;
+
+  menuToggle?.addEventListener("click", () => {
+    const isOpened = menuToggle.classList.toggle("opened");
+    mobileMenu?.classList.toggle("active");
+    body.classList.toggle("menu-open");
+    menuToggle.setAttribute("aria-expanded", isOpened.toString());
+  });
+
+  // Close menu when a link is clicked
+  const mobileLinks = mobileMenu?.querySelectorAll("a");
+  mobileLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle?.classList.remove("opened");
+      mobileMenu?.classList.remove("active");
+      body.classList.remove("menu-open");
+    });
+  });
+</script>
 
 <style>
   .header {
@@ -83,6 +139,100 @@ import { Home } from "lucide-astro";
     color: var(--text-primary);
   }
 
+  /* Hamburger Menu Toggle */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    position: relative;
+    width: 44px;
+    height: 44px;
+  }
+
+  .hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    left: 0;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger::before {
+    top: -8px;
+  }
+  .hamburger::after {
+    top: 8px;
+  }
+
+  .menu-toggle.opened .hamburger {
+    background: transparent;
+  }
+
+  .menu-toggle.opened .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .menu-toggle.opened .hamburger::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  /* Mobile Menu Overlay */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-primary);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translateY(-10px);
+  }
+
+  .mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .mobile-nav ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .mobile-nav a {
+    font-size: 1.5rem;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    color: var(--text-primary);
+    text-transform: capitalize;
+  }
+
   .btn {
     padding: 0.8rem 1.75rem;
     border-radius: 99px;
@@ -104,10 +254,24 @@ import { Home } from "lucide-astro";
     box-shadow: 0 4px 12px rgba(187, 146, 78, 0.2);
   }
 
+  .w-full {
+    width: 100%;
+  }
+
+  .mt-8 {
+    margin-top: 2rem;
+  }
+
   @media (max-width: 768px) {
     .nav,
     .cta {
       display: none;
+    }
+
+    .menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 </style>

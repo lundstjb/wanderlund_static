@@ -178,14 +178,30 @@ const { property } = Astro.props;
   @media (max-width: 968px) {
     .content-grid {
       grid-template-columns: 1fr;
+      gap: 3rem;
     }
 
-    h1 {
-      font-size: 2.5rem;
+    .property-hero {
+      padding: 2rem 0;
     }
 
     .main-image {
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 4 / 3;
+    }
+
+    .location {
+      margin-bottom: 2.5rem;
+    }
+
+    .description,
+    .amenities-section {
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .amenities-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

@@ -210,12 +210,37 @@ import { properties } from "../data/properties";
       gap: 4rem;
     }
 
+    .hero {
+      height: 70vh;
+      min-height: 500px;
+    }
+
     .hero h1 {
       font-size: 3rem;
     }
 
     .property-grid {
       grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-actions {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-actions .btn {
+      width: 100%;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
     }
   }
 </style>

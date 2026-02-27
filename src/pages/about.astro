@@ -311,14 +311,29 @@ import Footer from "../components/Footer.astro";
     .about-grid,
     .pricing-grid {
       grid-template-columns: 1fr;
-      gap: 5rem;
+      gap: 3rem;
     }
 
-    .about-content h1,
-    .section-title h2,
-    .pricing-section h2,
-    .cta-section h2 {
-      font-size: 3rem;
+    .about-content h1 {
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .intro-section {
+      padding-top: 3rem;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-section .p-12 {
+      padding: 2rem;
     }
   }
 </style>
