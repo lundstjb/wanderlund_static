@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import PhotoCarousel from "../../components/PhotoCarousel.astro";
 import { properties } from "../../data/properties";
 import { Users, Bed, Bath, Check } from "lucide-astro";
 
@@ -22,7 +23,7 @@ const { property } = Astro.props;
     <section class="property-hero">
       <div class="container hero-grid">
         <div class="gallery">
-          <img src={property.image} alt={property.title} class="main-image" />
+          <PhotoCarousel images={property.images} />
         </div>
         {
           (
@@ -94,14 +95,6 @@ const { property } = Astro.props;
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-  }
-
-  .main-image {
-    width: 100%;
-    aspect-ratio: 21 / 9;
-    object-fit: cover;
-    border-radius: var(--radius);
-    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
   }
 
   .content-grid {
@@ -197,14 +190,6 @@ const { property } = Astro.props;
     .content-grid {
       grid-template-columns: 1fr !important;
       padding-top: 2rem !important;
-    }
-
-    .main-image {
-      border-radius: 0 !important;
-      width: 100vw !important;
-      margin-left: -1.5rem !important;
-      aspect-ratio: 4 / 3 !important;
-      box-shadow: none !important;
     }
 
     .amenities-grid {
