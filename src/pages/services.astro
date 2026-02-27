@@ -26,39 +26,127 @@ import Footer from "../components/Footer.astro";
           <div class="service-card">
             <h3>Listing Optimization</h3>
             <p>
-              Professional photography and expert copywriting to make your
-              property stand out on every platform.
+              Professional listings on Airbnb and VRBO, including photography
+              and direct booking options.
             </p>
           </div>
           <div class="service-card">
             <h3>Dynamic Pricing</h3>
             <p>
-              Real-time data-driven pricing strategies to ensure maximum
-              occupancy and revenue throughout the year.
+              Demand-based pricing models to capture peak market rates and
+              maximize your occupancy.
             </p>
           </div>
           <div class="service-card">
             <h3>5-Star Guest Support</h3>
             <p>
-              Round-the-clock communication and local support to ensure every
-              guest has an unforgettable stay.
+              Round-the-clock support, automated check-in, and customized
+              digital guidebooks for every stay.
             </p>
           </div>
           <div class="service-card">
             <h3>Professional Turnover</h3>
             <p>
-              Rigorous cleaning standards and routine maintenance to keep your
-              property in pristine condition.
+              Complete coordination of cleaning, laundry, and property staging
+              to elite standards.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Routine Inspections</h3>
+            <p>
+              Regular walkthroughs to ensure all appliances and features remain
+              in top-tier condition.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Financial Reporting</h3>
+            <p>
+              Detailed monthly statements and real-time booking information.
             </p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="cta-banner mt-16 text-center">
+    <section class="section bg-secondary">
+      <div class="container">
+        <div class="section-header text-center">
+          <h1>Simple Pricing</h1>
+          <p class="max-w-2xl mx-auto">
+            Our fees are designed to align our success with yours. We only make
+            money when you do.
+          </p>
+        </div>
+
+        <div class="services-grid mt-12">
+          <div class="service-card">
+            <h3>Management Fee</h3>
+            <p>
+              20% of the accommodation rate, net of taxes and platform fees.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Onboarding Fee</h3>
+            <p>
+              A one-time setup covers photography, portal integration, and
+              guidebook publishing.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Supply Fee</h3>
+            <p>
+              A flat monthly rate to keep your property stocked with essential
+              amenities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <h1>Owner Perks</h1>
+          <p class="max-w-2xl mx-auto">
+            Enjoy the benefits of ownership without the hassle of day-to-day
+            operations.
+          </p>
+        </div>
+
+        <div class="services-grid mt-12">
+          <div class="service-card">
+            <h3>Unlimited Personal Use</h3>
+            <p>
+              Owners maintain full access for personal stays with no black-out
+              dates.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Maintenance Authority</h3>
+            <p>
+              We handle minor repairs immediately to protect your asset and the
+              guest experience.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Inventory Support</h3>
+            <p>
+              We ensure your property is fully stocked with essentials like
+              paper products, coffee, and soaps.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pt-0">
+      <div class="container">
+        <div class="cta-banner text-center">
           <h2>Ready to elevate your investment?</h2>
           <p>
             Contact us today for a free revenue projection for your property.
           </p>
-          <a href="./contact" class="btn btn-primary mt-4"
+          <a href="/contact/index.html" class="btn btn-primary mt-4"
             >Get a Free Consultation</a
           >
         </div>
@@ -83,13 +171,12 @@ import Footer from "../components/Footer.astro";
   .mt-12 {
     margin-top: 3rem;
   }
-  .mt-16 {
-    margin-top: 4rem;
+  .bg-secondary {
+    background: var(--bg-secondary);
   }
-  .mt-4 {
-    margin-top: 1rem;
+  .pt-0 {
+    padding-top: 0 !important;
   }
-
   .section-header h1 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
@@ -103,9 +190,19 @@ import Footer from "../components/Footer.astro";
 
   .service-card {
     padding: 2rem;
-    background: var(--bg-secondary);
+    background: var(--bg-primary); /* Use primary so it pops on secondary bg */
     border-radius: var(--radius);
     border: 1px solid var(--border);
+    height: 100%;
+  }
+
+  .bg-secondary .service-card {
+    background: var(--bg-primary);
+  }
+
+  /* When not in a bg-secondary block, standard background is fine, but lets ensure distinctiveness */
+  section:not(.bg-secondary) .service-card {
+    background: var(--bg-secondary);
   }
 
   .service-card h3 {

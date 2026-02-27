@@ -13,11 +13,13 @@ export interface Property {
   description: string;
   amenities: string[];
   airbnbUrl: string;
+  isActive: boolean;
 }
 
 export const properties: Property[] = [
   {
     id: "1",
+    isActive: true,
     slug: "jackson-flat-old-city-knoxville",
     title: "Jackson Flat Old City Knoxville",
     location: "Knoxville, TN",
@@ -75,6 +77,7 @@ export const properties: Property[] = [
   },
   {
     id: "2",
+    isActive: true,
     slug: "white-lily-old-city-knoxville",
     title: "White Lily Old City Knoxville",
     location: "Knoxville, TN",
@@ -164,6 +167,7 @@ export const properties: Property[] = [
   },
   {
     id: "3",
+    isActive: false,
     slug: "urban-wilderness-south-knoxville",
     title: "Urban Wilderness South Knoxville",
     location: "Knoxville, TN",
