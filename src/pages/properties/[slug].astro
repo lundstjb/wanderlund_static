@@ -39,7 +39,11 @@ const { property } = Astro.props;
                   <Bath size={18} /> {property.bathrooms} Bathrooms
                 </span>
               </div>
-              <a class="btn btn-primary w-full" href={property.airbnbUrl}>
+              <a
+                class="btn btn-primary w-full"
+                href={property.airbnbUrl}
+                target="_blank"
+              >
                 Check Availability
               </a>
             </div>
