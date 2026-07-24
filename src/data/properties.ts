@@ -271,8 +271,8 @@ export const properties: Property[] = [
     bedrooms: 2,
     beds: 2,
     bathrooms: 2,
-    image: "/images/properties/lilys_landing/placeholder.jpg",
-    images: ["/images/properties/lilys_landing/placeholder.jpg"],
+    image: "/images/properties/lilys_landing/hero.png",
+    images: ["/images/properties/lilys_landing/hero.png"],
     description:
       "Experience the perfect blend of historic charm & modern luxury at Lily's Landing. A spacious, 2bd/2ba, 1st floor condo in the iconic White Lily Building in the Old City. Perfectly suited for couples, friends, wedding guests, or small families, this unit offers the ultimate downtown Knoxville convenience with NO stairs, remote work set-up, and dedicated parking. You are just moments away from the new Smokies stadium, the Mill & Mine, Market Square, Jackson Terminal and UT sporting events/campus.",
     amenities: [
