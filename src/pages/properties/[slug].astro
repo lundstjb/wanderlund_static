@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.astro";
 import PhotoCarousel from "../../components/PhotoCarousel.astro";
 import { properties } from "../../data/properties";
 import { Users, Bed, Bath, Check } from "lucide-astro";
+import { vacationRentalSchema } from "../../lib/schema";
 
 export async function getStaticPaths() {
   return properties.map((property) => ({
@@ -16,7 +17,12 @@ export async function getStaticPaths() {
 const { property } = Astro.props;
 ---
 
-<Layout title={property.title} description={property.description}>
+<Layout
+  title={property.title}
+  description={property.description}
+  image={property.image}
+  jsonLd={vacationRentalSchema(property)}
+>
   <Header />
 
   <main>
