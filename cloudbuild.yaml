@@ -9,30 +9,20 @@ steps:
     entrypoint: "npm"
     args: ["run", "build"]
 
-  # List files for debugging
-  - name: "gcr.io/cloud-builders/gsutil"
-    entrypoint: "bash"
-    args: ["-c", "ls -R dist/"]
-
-  # Upload to Cloud Storage
-  - name: "gcr.io/cloud-builders/gsutil"
+  # Deploy to Firebase Hosting (settings in firebase.json)
+  - name: "node:18"
+    entrypoint: "npx"
     args:
       [
-        "-h",
-        "Cache-Control:no-cache, max-age=0",
-        "-m",
-        "rsync",
-        "-r",
-        "-c",
-        "-d",
-        "-x",
-        ".*\\.map$",
-        "dist",
-        "gs://${_BUCKET_NAME}",
+        "--yes",
+        "firebase-tools@13",
+        "deploy",
+        "--only",
+        "hosting",
+        "--project",
+        "$PROJECT_ID",
+        "--non-interactive",
       ]
-
-substitutions:
-  _BUCKET_NAME: "www.wanderlund.com" # Default value, can be overridden
 
 options:
   logging: CLOUD_LOGGING_ONLY
