@@ -34,6 +34,40 @@ export function organizationSchema(): JsonLd {
   };
 }
 
+const MANAGEMENT_SERVICES = [
+  "Listing Management",
+  "Dynamic Pricing",
+  "Guest Services",
+  "Professional Turnover",
+  "Routine Inspections",
+  "Financial Reporting",
+];
+
+/** Schema.org Service for the property management offering on /services/. */
+export function managementServiceSchema(): JsonLd {
+  const url = absoluteUrl("/services/");
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: "Short-term rental property management in Knoxville, TN",
+    serviceType: "Short-term rental property management",
+    description:
+      "Full-service Airbnb and VRBO management for furnished residential properties in Knoxville, Tennessee.",
+    url,
+    provider: { "@id": ORG_ID },
+    areaServed: { "@type": "City", name: "Knoxville, TN" },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Property management services",
+      itemListElement: MANAGEMENT_SERVICES.map((name) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name },
+      })),
+    },
+  };
+}
+
 /** Schema.org VacationRental for a single property page. */
 export function vacationRentalSchema(property: Property): JsonLd {
   const url = absoluteUrl(`/properties/${property.slug}/`);

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { Property } from "../data/properties";
 import {
   jsonLdString,
+  managementServiceSchema,
   organizationSchema,
   vacationRentalSchema,
 } from "./schema";
@@ -43,6 +44,27 @@ describe("vacationRentalSchema", () => {
   it("omits amenityFeature when there are no amenities", () => {
     const s = vacationRentalSchema({ ...base, amenities: [] }) as any;
     expect(s.containsPlace).not.toHaveProperty("amenityFeature");
+  });
+});
+
+describe("managementServiceSchema", () => {
+  it("describes the Knoxville management service and links to the organization", () => {
+    const s = managementServiceSchema() as any;
+    expect(s["@type"]).toBe("Service");
+    expect(s.url).toBe("https://www.wanderlund.com/services/");
+    expect(s.provider["@id"]).toBe(organizationSchema()["@id"]);
+    expect(s.areaServed.name).toBe("Knoxville, TN");
+    const names = s.hasOfferCatalog.itemListElement.map(
+      (o: any) => o.itemOffered.name,
+    );
+    expect(names).toEqual([
+      "Listing Management",
+      "Dynamic Pricing",
+      "Guest Services",
+      "Professional Turnover",
+      "Routine Inspections",
+      "Financial Reporting",
+    ]);
   });
 });
 
