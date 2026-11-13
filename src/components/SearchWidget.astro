@@ -1,0 +1,22 @@
+---
+/**
+ * Hospitable multi-property search. With `resultsUrl` it renders a search bar
+ * that redirects there with the dates in the query string. Without it, the
+ * element reads those query params and renders the results.
+ */
+interface Props {
+  resultsUrl?: string;
+}
+
+const IDENTIFIER = "6cbc0b81-efca-4466-841a-652beaa13716";
+const { resultsUrl } = Astro.props;
+---
+
+<script
+  is:inline
+  src="https://hospitable.b-cdn.net/direct-property-search-widget/hospitable-search-widget.prod.js"
+></script>
+<hospitable-direct-mps
+  identifier={IDENTIFIER}
+  type="custom"
+  results-url={resultsUrl}></hospitable-direct-mps>

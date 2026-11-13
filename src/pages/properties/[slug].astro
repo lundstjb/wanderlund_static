@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import PhotoCarousel from "../../components/PhotoCarousel.astro";
+import BookingWidget from "../../components/BookingWidget.astro";
 import { properties } from "../../data/properties";
 import { Users, Bed, Bath, Check } from "lucide-astro";
 import { vacationRentalSchema } from "../../lib/schema";
@@ -31,30 +32,6 @@ const { property } = Astro.props;
         <div class="gallery">
           <PhotoCarousel images={property.images} />
         </div>
-        {
-          (
-            <div class="booking-card">
-              <div class="quick-info">
-                <span>
-                  <Users size={18} /> {property.guests} Guests
-                </span>
-                <span>
-                  <Bed size={18} /> {property.bedrooms} Bedrooms
-                </span>
-                <span>
-                  <Bath size={18} /> {property.bathrooms} Bathrooms
-                </span>
-              </div>
-              <a
-                class="btn btn-primary w-full"
-                href={property.airbnbUrl}
-                target="_blank"
-              >
-                Check Availability
-              </a>
-            </div>
-          )
-        }
       </div>
     </section>
 
@@ -88,6 +65,28 @@ const { property } = Astro.props;
             </div>
           </div>
         </div>
+
+        <aside class="booking-card" id="book">
+          <div class="quick-info">
+            <span>
+              <Users size={18} /> {property.guests} Guests
+            </span>
+            <span>
+              <Bed size={18} /> {property.bedrooms} Bedrooms
+            </span>
+            <span>
+              <Bath size={18} /> {property.bathrooms} Bathrooms
+            </span>
+          </div>
+          <BookingWidget property={property} />
+          {
+            property.hospitablePropertyId && (
+              <a class="airbnb-link" href={property.airbnbUrl} target="_blank">
+                Prefer Airbnb? View this listing there
+              </a>
+            )
+          }
+        </aside>
       </div>
     </section>
   </main>
@@ -109,8 +108,27 @@ const { property } = Astro.props;
 
   .content-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 6rem;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .booking-card {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .airbnb-link {
+    display: block;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+  }
+
+  .airbnb-link:hover {
+    color: var(--accent);
   }
 
   .breadcrumbs {
@@ -203,6 +221,10 @@ const { property } = Astro.props;
     .content-grid {
       grid-template-columns: 1fr !important;
       padding-top: 2rem !important;
+    }
+
+    .booking-card {
+      position: static;
     }
 
     .amenities-grid {

@@ -102,7 +102,7 @@ export function vacationRentalSchema(property: Property): JsonLd {
     containsPlace: accommodation,
     makesOffer: {
       "@type": "Offer",
-      url: property.airbnbUrl,
+      url: property.hospitablePropertyId ? url : property.airbnbUrl,
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         minPrice: property.nightlyFrom,
