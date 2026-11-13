@@ -86,9 +86,14 @@ export function vacationRentalSchema(property: Property): JsonLd {
     }));
   }
 
+  const geo = property.geo
+    ? { geo: { "@type": "GeoCoordinates", ...property.geo } }
+    : {};
+
   return {
     "@context": "https://schema.org",
     "@type": "VacationRental",
+    ...geo,
     "@id": `${url}#rental`,
     identifier: property.slug,
     name: property.title,

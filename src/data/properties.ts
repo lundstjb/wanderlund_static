@@ -16,6 +16,8 @@ export interface Property {
   airbnbUrl: string;
   /** Hospitable property ID for the direct booking widget. Omit to fall back to Airbnb. */
   hospitablePropertyId?: string;
+  /** Neighborhood-level coordinates, rounded to 2 decimals (~1 km). Never the exact address. */
+  geo?: { latitude: number; longitude: number };
   isActive: boolean;
 }
 
