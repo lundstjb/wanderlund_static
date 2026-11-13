@@ -3,7 +3,8 @@ export interface Property {
   slug: string;
   title: string;
   location: string;
-  price: string;
+  /** Lowest nightly rate in USD, before taxes and fees. */
+  nightlyFrom: number;
   guests: number;
   bedrooms: number;
   beds: number;
@@ -23,7 +24,7 @@ export const properties: Property[] = [
     slug: "jackson-flat-old-city-knoxville",
     title: "Jackson Flat Old City Knoxville",
     location: "Knoxville, TN",
-    price: "$250/night",
+    nightlyFrom: 250,
     guests: 6,
     bedrooms: 2,
     beds: 2,
@@ -81,7 +82,7 @@ export const properties: Property[] = [
     slug: "white-lily-old-city-knoxville",
     title: "White Lily Old City Knoxville",
     location: "Knoxville, TN",
-    price: "$180/night",
+    nightlyFrom: 180,
     guests: 6,
     bedrooms: 2,
     beds: 3,
@@ -171,7 +172,7 @@ export const properties: Property[] = [
     slug: "sokno-101",
     title: "SoKno 101 Getaway",
     location: "Knoxville, TN",
-    price: "$180/night",
+    nightlyFrom: 180,
     guests: 8,
     bedrooms: 2,
     beds: 3,
@@ -266,7 +267,7 @@ export const properties: Property[] = [
     slug: "lilys-landing-old-city-knoxville",
     title: "Lily's Landing",
     location: "Knoxville, TN",
-    price: "$200/night",
+    nightlyFrom: 200,
     guests: 6,
     bedrooms: 2,
     beds: 2,

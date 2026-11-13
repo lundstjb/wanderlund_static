@@ -1,7 +1,9 @@
-// // @ts-check
-// import { defineConfig } from 'astro/config';
+// @ts-check
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 
-// // https://astro.build/config
-// export default defineConfig({
-//   base: '/www.wanderlund.com/'
-// });
+// https://astro.build/config
+export default defineConfig({
+  site: "https://www.wanderlund.com",
+  integrations: [sitemap()],
+});

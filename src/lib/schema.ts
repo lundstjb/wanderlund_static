@@ -1,0 +1,85 @@
+import type { Property } from "../data/properties";
+
+export const SITE = "https://www.wanderlund.com";
+const ORG_ID = `${SITE}/#organization`;
+
+type JsonLd = Record<string, unknown>;
+
+const KNOXVILLE_ADDRESS = {
+  "@type": "PostalAddress",
+  addressLocality: "Knoxville",
+  addressRegion: "TN",
+  addressCountry: "US",
+};
+
+/** Absolute URL for a site path. */
+export function absoluteUrl(path: string): string {
+  return new URL(path, SITE).toString();
+}
+
+/** Schema.org LocalBusiness for Wanderlund, included on every page. */
+export function organizationSchema(): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": ORG_ID,
+    name: "Wanderlund",
+    url: `${SITE}/`,
+    description:
+      "Boutique vacation rentals and full-service short-term rental property management in Knoxville, Tennessee.",
+    telephone: "+1-865-712-1490",
+    email: "wanderlundventures@gmail.com",
+    address: KNOXVILLE_ADDRESS,
+    areaServed: { "@type": "City", name: "Knoxville, TN" },
+  };
+}
+
+/** Schema.org VacationRental for a single property page. */
+export function vacationRentalSchema(property: Property): JsonLd {
+  const url = absoluteUrl(`/properties/${property.slug}/`);
+  const accommodation: JsonLd = {
+    "@type": "Accommodation",
+    additionalType: "EntirePlace",
+    numberOfBedrooms: property.bedrooms,
+    numberOfBathroomsTotal: property.bathrooms,
+    occupancy: { "@type": "QuantitativeValue", maxValue: property.guests },
+  };
+  if (property.amenities.length > 0) {
+    accommodation.amenityFeature = property.amenities.map((name) => ({
+      "@type": "LocationFeatureSpecification",
+      name,
+      value: true,
+    }));
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "VacationRental",
+    "@id": `${url}#rental`,
+    identifier: property.slug,
+    name: property.title,
+    url,
+    description: property.description,
+    image: property.images.map(absoluteUrl),
+    address: KNOXVILLE_ADDRESS,
+    priceRange: `From $${property.nightlyFrom}/night`,
+    parentOrganization: { "@id": ORG_ID },
+    sameAs: [property.airbnbUrl],
+    containsPlace: accommodation,
+    makesOffer: {
+      "@type": "Offer",
+      url: property.airbnbUrl,
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        minPrice: property.nightlyFrom,
+        priceCurrency: "USD",
+        unitText: "night",
+      },
+    },
+  };
+}
+
+/** Serialize JSON-LD for a <script> tag, escaping "<" so content cannot close the tag. */
+export function jsonLdString(data: JsonLd | JsonLd[]): string {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
