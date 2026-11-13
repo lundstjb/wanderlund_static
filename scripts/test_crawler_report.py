@@ -2,7 +2,9 @@
 
 import unittest
 
-from crawler_report import classify, render, summarize
+from datetime import datetime, timezone
+
+from crawler_report import build_filter, classify, render, summarize
 
 
 def entry(ua: str, url: str = "https://www.wanderlund.com/", status: int = 200,
@@ -19,6 +21,11 @@ class ClassifyTest(unittest.TestCase):
 
     def test_case_insensitive(self) -> None:
         self.assertEqual(classify("perplexitybot/1.0"), ("PerplexityBot", "search"))
+
+    def test_search_indexes(self) -> None:
+        bing = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0)"
+        self.assertEqual(classify(bing), ("bingbot", "index"))
+        self.assertEqual(classify("Googlebot/2.1"), ("Googlebot", "index"))
 
     def test_regular_browser_is_ignored(self) -> None:
         self.assertIsNone(classify("Mozilla/5.0 (Macintosh) Safari/605.1.15"))
@@ -41,6 +48,10 @@ class SummarizeTest(unittest.TestCase):
 
     def test_skips_test_traffic(self) -> None:
         self.assertEqual(summarize([entry("ClaudeBot/1.0; logging-test")]), {})
+
+    def test_filter_reads_firebase_web_request_log(self) -> None:
+        f = build_filter(datetime(2026, 11, 1, tzinfo=timezone.utc))
+        self.assertIn('logs/firebasehosting.googleapis.com%2Fwebrequests"', f)
 
     def test_render_empty(self) -> None:
         self.assertIn("No AI crawler hits", render({}, 7, 5))

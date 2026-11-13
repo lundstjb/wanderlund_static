@@ -19,7 +19,7 @@ from datetime import datetime, timedelta, timezone
 from urllib.parse import urlparse
 
 PROJECT = "wanderlund-static-website"
-LOG_NAME = f"projects/{PROJECT}/logs/firebasehosting"
+LOG_NAME = f"projects/{PROJECT}/logs/firebasehosting.googleapis.com%2Fwebrequests"
 
 # User-agent token -> category. Order matters only if tokens overlap; none do today.
 BOTS: dict[str, str] = {
@@ -36,6 +36,9 @@ BOTS: dict[str, str] = {
     "Claude-User": "user-triggered",
     "Perplexity-User": "user-triggered",
     "meta-externalfetcher": "user-triggered",
+    # Search indexes that ground assistants: Bing feeds ChatGPT search, Google feeds Gemini.
+    "bingbot": "index",
+    "Googlebot": "index",
 }
 
 # Requests whose user agent contains this marker are our own test traffic.
@@ -114,7 +117,7 @@ def render(stats: dict[str, BotStats], days: int, top: int) -> str:
     by_cat: dict[str, list[tuple[str, BotStats]]] = defaultdict(list)
     for bot, s in stats.items():
         by_cat[s.category].append((bot, s))
-    for category in ("user-triggered", "search", "training"):
+    for category in ("user-triggered", "search", "index", "training"):
         bots = sorted(by_cat.get(category, []), key=lambda b: -b[1].hits)
         if not bots:
             continue
