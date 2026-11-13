@@ -56,6 +56,22 @@ describe("vacationRentalSchema", () => {
     const s = vacationRentalSchema({ ...base, amenities: [] }) as any;
     expect(s.containsPlace).not.toHaveProperty("amenityFeature");
   });
+
+  it("adds GeoCoordinates when coordinates are set", () => {
+    const s = vacationRentalSchema({
+      ...base,
+      geo: { latitude: 35.97, longitude: -83.92 },
+    }) as any;
+    expect(s.geo).toEqual({
+      "@type": "GeoCoordinates",
+      latitude: 35.97,
+      longitude: -83.92,
+    });
+  });
+
+  it("omits geo when coordinates are not set", () => {
+    expect(vacationRentalSchema(base)).not.toHaveProperty("geo");
+  });
 });
 
 describe("managementServiceSchema", () => {
