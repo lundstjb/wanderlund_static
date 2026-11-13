@@ -41,6 +41,17 @@ describe("vacationRentalSchema", () => {
     expect(s.parentOrganization["@id"]).toBe(organizationSchema()["@id"]);
   });
 
+  it("points the offer at the property page when direct booking is set up", () => {
+    const s = vacationRentalSchema({ ...base, hospitablePropertyId: "123" }) as any;
+    expect(s.makesOffer.url).toBe("https://www.wanderlund.com/properties/test-flat/");
+    expect(s.sameAs).toEqual(["https://www.airbnb.com/rooms/1"]);
+  });
+
+  it("points the offer at Airbnb when there is no direct booking widget", () => {
+    const s = vacationRentalSchema(base) as any;
+    expect(s.makesOffer.url).toBe("https://www.airbnb.com/rooms/1");
+  });
+
   it("omits amenityFeature when there are no amenities", () => {
     const s = vacationRentalSchema({ ...base, amenities: [] }) as any;
     expect(s.containsPlace).not.toHaveProperty("amenityFeature");

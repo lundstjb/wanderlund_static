@@ -12,7 +12,9 @@ export const GET: APIRoute = () => {
         `- [${p.title}](${SITE}/properties/${p.slug}/): ${p.location}. ` +
         `${p.bedrooms} bedrooms, ${p.bathrooms} bathroom${p.bathrooms === 1 ? "" : "s"}, sleeps ${p.guests}. ` +
         `From $${p.nightlyFrom}/night. Amenities: ${p.amenities.join(", ")}. ` +
-        `Book on Airbnb: ${p.airbnbUrl}`,
+        (p.hospitablePropertyId
+          ? `Book direct: ${SITE}/properties/${p.slug}/ (also on Airbnb: ${p.airbnbUrl})`
+          : `Book on Airbnb: ${p.airbnbUrl}`),
     )
     .join("\n");
 

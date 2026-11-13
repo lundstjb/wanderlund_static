@@ -14,6 +14,8 @@ export interface Property {
   description: string;
   amenities: string[];
   airbnbUrl: string;
+  /** Hospitable property ID for the direct booking widget. Omit to fall back to Airbnb. */
+  hospitablePropertyId?: string;
   isActive: boolean;
 }
 
@@ -75,6 +77,7 @@ export const properties: Property[] = [
       "Walking Distance to Covenant Health Stadium",
     ],
     airbnbUrl: "https://www.airbnb.com/rooms/1421115194865410926",
+    hospitablePropertyId: "2351088",
   },
   {
     id: "2",
@@ -165,6 +168,7 @@ export const properties: Property[] = [
       "Walking Distance to Covenant Health Stadium",
     ],
     airbnbUrl: "https://www.airbnb.com/rooms/1618479981136128375",
+    hospitablePropertyId: "2351089",
   },
   {
     id: "3",
@@ -260,6 +264,7 @@ export const properties: Property[] = [
       "Welcome to SoKno 101! This brand new two-story townhome offers 2BD/2.5BA, FREE PARKING for multiple cars, a king & queen bed, smart TVs in each room, & fully equipped kitchen. Whether you're visiting for a game day, exploring local nature trails, attending a wedding or enjoying the city's restaurants & nightlife, this comfortable and conveniently located home makes the perfect getaway. Skip the hassle of downtown parking & late-night noise while still being only minutes away from all the action.",
     amenities: ["Free Parking", "Wi-Fi", "Full Kitchen", "Smart TVs"],
     airbnbUrl: "https://www.airbnb.com/rooms/1639502685847073970",
+    hospitablePropertyId: "2351090",
   },
   {
     id: "4",
@@ -287,5 +292,6 @@ export const properties: Property[] = [
       "Remote Work Set-Up",
     ],
     airbnbUrl: "https://www.airbnb.com/rooms/1735870827601562766",
+    hospitablePropertyId: "2351092",
   },
 ];
