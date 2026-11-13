@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-13T12:00:00Z",
+  "title": "Design System: Wanderlund",
+  "extensions": {
+    "colorMeta": {
+      "parchment": {
+        "role": "neutral",
+        "displayName": "Parchment",
+        "canonical": "#f3efe7",
+        "tonalRamp": [
+          "#3a362f",
+          "#5d574c",
+          "#8a8272",
+          "#b3ab98",
+          "#cfc7b4",
+          "#e2dccc",
+          "#ece7da",
+          "#f3efe7"
+        ]
+      },
+      "linen": {
+        "role": "neutral",
+        "displayName": "Linen",
+        "canonical": "#e8e2d6",
+        "tonalRamp": [
+          "#38342c",
+          "#58524a",
+          "#827b6e",
+          "#a9a193",
+          "#c6bfae",
+          "#d9d2c3",
+          "#e4ded1",
+          "#e8e2d6"
+        ]
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal",
+        "canonical": "#2c2c2c",
+        "tonalRamp": [
+          "#1a1a1a",
+          "#2c2c2c",
+          "#444444",
+          "#5c5c5c",
+          "#7a7a7a",
+          "#9a9a9a",
+          "#c4c4c4",
+          "#e6e6e6"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#5c5c5c",
+        "tonalRamp": [
+          "#1f1f1f",
+          "#2c2c2c",
+          "#444444",
+          "#5c5c5c",
+          "#7a7a7a",
+          "#9a9a9a",
+          "#c4c4c4",
+          "#e6e6e6"
+        ]
+      },
+      "brass": {
+        "role": "primary",
+        "displayName": "Antique Brass",
+        "canonical": "#bb924e",
+        "tonalRamp": [
+          "#3b2d13",
+          "#5c4620",
+          "#7d5f2c",
+          "#a67d3d",
+          "#bb924e",
+          "#cfae78",
+          "#e2cba6",
+          "#f1e5cf"
+        ]
+      },
+      "sand-line": {
+        "role": "neutral",
+        "displayName": "Sand Line",
+        "canonical": "#dcd4c8",
+        "tonalRamp": [
+          "#3d3a35",
+          "#5f5b53",
+          "#857f74",
+          "#aaa498",
+          "#c4bdb0",
+          "#dcd4c8",
+          "#e9e4da",
+          "#f4f1ea"
+        ]
+      },
+      "brass-light": {
+        "role": "primary",
+        "displayName": "Light Brass",
+        "canonical": "#c9a465",
+        "tonalRamp": [
+          "#3b2d13",
+          "#5c4620",
+          "#7d5f2c",
+          "#a67d3d",
+          "#bb924e",
+          "#c9a465",
+          "#e2cba6",
+          "#f1e5cf"
+        ]
+      },
+      "brass-text": {
+        "role": "primary",
+        "displayName": "Text Brass",
+        "canonical": "#7d5f2c",
+        "tonalRamp": [
+          "#26190a",
+          "#3b2d13",
+          "#5c4620",
+          "#7d5f2c",
+          "#a67d3d",
+          "#bb924e",
+          "#d9bb8d",
+          "#f1e5cf"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "h1 and hero headline, Cormorant Garamond."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "h2 section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h3 card and service titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs in Graphite, Montserrat."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase, letter-spaced buttons, nav, eyebrows, and card metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-lift",
+        "value": "0 20px 40px -10px rgba(0, 0, 0, 0.08)",
+        "purpose": "Property card hover."
+      },
+      {
+        "name": "service-lift",
+        "value": "0 10px 40px -10px rgba(0, 0, 0, 0.1)",
+        "purpose": "Service card hover."
+      },
+      {
+        "name": "button-glow",
+        "value": "0 12px 24px rgba(187, 146, 78, 0.15)",
+        "purpose": "Button hover, brass tinted."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-soft-out",
+        "value": "cubic-bezier(0.165, 0.84, 0.44, 1)",
+        "purpose": "Buttons, cards, and mobile menu, 0.4s."
+      },
+      {
+        "name": "ease-standard",
+        "value": "ease",
+        "purpose": "Links, icons, and image zoom, 0.3s to 0.6s."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone-small",
+        "value": "375px"
+      },
+      {
+        "name": "phone",
+        "value": "600px"
+      },
+      {
+        "name": "tablet",
+        "value": "768px"
+      },
+      {
+        "name": "collapse",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Brass pill with uppercase label; the one main action per view.",
+      "html": "<button class=\"ds-btn-primary\">Book a Stay</button>",
+      "css": ".ds-btn-primary { background: #bb924e; color: #2c2c2c; border: 1px solid #bb924e; border-radius: 99px; padding: 0.9rem 2rem; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); } .ds-btn-primary:hover { background: #c9a465; border-color: #c9a465; transform: translateY(-4px); box-shadow: 0 12px 24px rgba(187, 146, 78, 0.15); } .ds-btn-primary:focus-visible { outline: 2px solid #2c2c2c; outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Transparent pill for use over the dark hero scrim.",
+      "html": "<button class=\"ds-btn-outline\">Learn More</button>",
+      "css": ".ds-btn-outline { background: #2c2c2c; color: #dcd4c8; border: 1px solid #dcd4c8; border-radius: 99px; padding: 0.9rem 2rem; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); } .ds-btn-outline:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(187, 146, 78, 0.15); } .ds-btn-outline:focus-visible { outline: 2px solid #bb924e; outline-offset: 3px; }"
+    },
+    {
+      "name": "Location Badge",
+      "kind": "chip",
+      "refersTo": "location-badge",
+      "description": "Blurred parchment pill pinned over property photos.",
+      "html": "<span class=\"ds-badge\">Knoxville, TN</span>",
+      "css": ".ds-badge { display: inline-block; background: rgba(243, 239, 231, 0.9); backdrop-filter: blur(4px); padding: 0.4rem 1rem; border-radius: 99px; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #2c2c2c; border: 1px solid rgba(255, 255, 255, 0.2); }"
+    },
+    {
+      "name": "Property Card",
+      "kind": "card",
+      "refersTo": "property-card",
+      "description": "Photo-led listing card with centered facts and a brass link.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-img\"><span class=\"ds-card-badge\">Knoxville, TN</span></div><div class=\"ds-card-body\"><h3>White Lily Old City</h3><div class=\"ds-card-facts\"><span>6 Guests</span><span>2 BR</span><span>3 Beds</span><span>2 BA</span></div><div class=\"ds-card-link\">View Details &rarr;</div></div></a>",
+      "css": ".ds-card { display: block; background: #f3efe7; border: 1px solid #dcd4c8; border-radius: 1.5rem; overflow: hidden; color: #2c2c2c; text-decoration: none; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); max-width: 360px; } .ds-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08); } .ds-card-img { position: relative; aspect-ratio: 4 / 3; background: linear-gradient(135deg, #d9d2c3, #bfae8a); } .ds-card-badge { position: absolute; top: 1.25rem; left: 1.25rem; background: rgba(243,239,231,0.9); padding: 0.4rem 1rem; border-radius: 99px; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; } .ds-card-body { padding: 2rem; text-align: center; } .ds-card-body h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.5rem; line-height: 1.1; margin-bottom: 1.25rem; } .ds-card-facts { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #5c5c5c; margin-bottom: 2rem; } .ds-card-link { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: #bb924e; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "service-card",
+      "description": "Icon, serif title, and short description; fill inverts against its section.",
+      "html": "<div class=\"ds-service\"><div class=\"ds-service-icon\">&#9733;</div><h3>Guest Services</h3><p>Round-the-clock support and digital guidebooks for every stay.</p></div>",
+      "css": ".ds-service { padding: 2rem; background: #e8e2d6; border: 1px solid #dcd4c8; border-radius: 1.5rem; max-width: 340px; transition: transform 0.3s ease, box-shadow 0.3s ease; } .ds-service:hover { transform: translateY(-5px); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1); } .ds-service-icon { width: 64px; height: 64px; border-radius: 50%; background: #f3efe7; color: #bb924e; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; } .ds-service h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.5rem; line-height: 1.1; color: #2c2c2c; margin-bottom: 0.75rem; } .ds-service p { font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.7; color: #5c5c5c; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Glass sticky header: wordmark, spaced-caps links, brass CTA.",
+      "html": "<header class=\"ds-header\"><span class=\"ds-logo\">Wanderlund</span><nav class=\"ds-nav\"><a href=\"#\">Properties</a><a href=\"#\">Services</a><a href=\"#\">About</a><a href=\"#\">Contact</a></nav><a class=\"ds-nav-cta\" href=\"#\">Book a Stay</a></header>",
+      "css": ".ds-header { display: flex; align-items: center; justify-content: space-between; gap: 2rem; height: 90px; padding: 0 2rem; background: rgba(243,239,231,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #dcd4c8; font-family: 'Montserrat', sans-serif; } .ds-logo { font-size: 1.25rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #2c2c2c; } .ds-nav { display: flex; gap: 2.5rem; } .ds-nav a { font-size: 0.9rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #5c5c5c; text-decoration: none; transition: color 0.3s ease; } .ds-nav a:hover { color: #2c2c2c; } .ds-nav a:focus-visible { outline: 2px solid #bb924e; outline-offset: 4px; } .ds-nav-cta { background: #bb924e; color: #fff; border-radius: 99px; padding: 0.9rem 2rem; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Concierge",
+    "overview": "The site behaves like a good concierge: attentive, unhurried, never loud. A warm parchment ground, a high-contrast serif voice, and one brass accent create the sense of a small, personally run house rather than a platform. Photography of real rooms carries the emotion, and the interface stays out of its way.\n\nDensity is low and generous. Sections breathe (4rem on mobile, 7rem on desktop), cards center their content, and motion is slow and soft. The system supports two equal audiences, guests deciding on a stay and owners judging a manager, with the same calm register for both.",
+    "keyCharacteristics": [
+      "Warm neutral ground with a single metallic accent, used sparingly.",
+      "Serif display type over a light geometric sans for labels and body.",
+      "Pill-shaped actions and generously rounded cards.",
+      "Full-bleed photographic hero with a dark scrim and centered white type.",
+      "Soft lift on hover; no hard edges or heavy shadows."
+    ],
+    "rules": [
+      {
+        "name": "The One Brass Rule",
+        "body": "Brass is the only accent and appears only on actions, eyebrows, and icons. Never use it for large fills, backgrounds, or body text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warm Neutral Rule",
+        "body": "Every neutral leans warm. No cool grays and no pure white or pure black grounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The Serif Speaks, Sans Serves Rule",
+        "body": "Serif is for headings and the mobile menu links only. All controls, metadata, and paragraphs are sans.",
+        "section": "typography"
+      },
+      {
+        "name": "The Spaced Caps Rule",
+        "body": "Uppercase is always paired with added letter-spacing (0.05em or more). Never uppercase body-length text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-Until-Touched Rule",
+        "body": "No resting shadows. A shadow means the user is interacting with the element.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep Antique Brass (#bb924e) to actions, eyebrows, and icons.",
+      "Do use Text Brass (#7d5f2c) whenever brass appears as text on a light ground.",
+      "Do keep a visible 2px Charcoal focus ring (3px offset) on every interactive element; it turns white over the hero.",
+      "Do put Charcoal text on brass fills; white on brass measures 2.86:1 and fails.",
+      "Do pair every uppercase label with at least 0.05em letter-spacing.",
+      "Do use the 1.5rem card radius and full-pill buttons together; they define the soft silhouette.",
+      "Do let real property photography carry emotion, and keep hero imagery under a scrim so white type stays legible.",
+      "Do alternate Parchment and Linen section bands and invert card fills against them.",
+      "Do reserve shadows for hover and focus responses."
+    ],
+    "donts": [
+      "Don't introduce a second accent color or use brass as a large surface or body text color.",
+      "Don't use cool grays, pure white, or pure black as page grounds.",
+      "Don't set body copy or controls in the serif, or headings in the sans.",
+      "Don't add resting drop shadows or hard-edged, square cards on desktop.",
+      "Don't flatten hero photography under a uniform dark scrim; keep the image readable above the copy.",
+      "Don't put Sand Line outline buttons on a Parchment ground; they lose contrast.",
+      "Don't assume a dark theme exists. The tokens are defined but unwired."
+    ]
+  }
+}

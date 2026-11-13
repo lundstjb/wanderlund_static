@@ -15,7 +15,7 @@
             <a href="/properties/">Properties</a>
           </li>
           <li>
-            <a href="/services/">Management Services</a>
+            <a href="/services/">For Owners</a>
           </li>
           <li>
             <a href="/about/">About Us</a>
@@ -27,8 +27,13 @@
       </div>
       <div class="footer-contact">
         <h4>Contact Us</h4>
-        <p>Email: wanderlundventures@gmail.com</p>
-        <p>Phone: +1 (865) 712-1490</p>
+        <p>
+          Email:
+          <a href="mailto:wanderlundventures@gmail.com"
+            >wanderlundventures@gmail.com</a
+          >
+        </p>
+        <p>Phone: <a href="tel:+18657121490">+1 (865) 712-1490</a></p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -90,8 +95,14 @@
     transition: all 0.3s ease;
   }
 
+  .footer-contact a {
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 0.3em;
+  }
+
   .footer ul a:hover {
-    color: var(--accent);
+    color: var(--accent-text);
     padding-left: 0.5rem;
   }
 
