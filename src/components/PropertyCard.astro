@@ -10,7 +10,7 @@ const { property } = Astro.props;
 ---
 
 <a
-  href={property.isActive ? `/properties/${property.slug}/` : ""}
+  href={property.isActive ? `/properties/${property.slug}/` : undefined}
   class="card-link"
 >
   <div class="card">
@@ -116,8 +116,9 @@ const { property } = Astro.props;
 
   .amenities {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 0.5rem 1.5rem;
     font-size: 0.8rem;
     color: var(--text-secondary);
     margin-bottom: 2rem;
@@ -127,6 +128,7 @@ const { property } = Astro.props;
   }
 
   .amenities span {
+    white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -138,7 +140,7 @@ const { property } = Astro.props;
     justify-content: center;
     gap: 0.5rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--accent-text);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -150,7 +152,7 @@ const { property } = Astro.props;
   }
 
   .card-link:hover .link {
-    border-bottom: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent-text);
     gap: 0.75rem;
   }
   @media (max-width: 1024px) {

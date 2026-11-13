@@ -14,7 +14,7 @@ import { Home } from "lucide-astro";
           <a href="/properties/">Properties</a>
         </li>
         <li>
-          <a href="/services/">Services</a>
+          <a href="/services/">For Owners</a>
         </li>
         <li><a href="/about/">About</a></li>
         <li>
@@ -27,7 +27,13 @@ import { Home } from "lucide-astro";
       <a href="/properties/" class="btn btn-primary">Book a Stay</a>
     </div>
 
-    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+    <button
+      class="menu-toggle"
+      id="menu-toggle"
+      aria-label="Toggle Menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
       <span class="hamburger"></span>
     </button>
   </div>
@@ -39,7 +45,7 @@ import { Home } from "lucide-astro";
           <a href="/properties/">Properties</a>
         </li>
         <li>
-          <a href="/services/">Services</a>
+          <a href="/services/">For Owners</a>
         </li>
         <li><a href="/about/">About</a></li>
         <li>
@@ -47,7 +53,7 @@ import { Home } from "lucide-astro";
         </li>
         <li class="mt-8">
           <a
-            href="/contact/"
+            href="/properties/"
             class="btn btn-primary w-full text-center">Book a Stay</a
           >
         </li>
@@ -73,12 +79,18 @@ import { Home } from "lucide-astro";
       });
 
       const mobileLinks = mobileMenu.querySelectorAll("a");
-      mobileLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          menuToggle.classList.remove("opened");
-          mobileMenu.classList.remove("active");
-          body.classList.remove("menu-open");
-        });
+      function closeMenu() {
+        menuToggle.classList.remove("opened");
+        mobileMenu.classList.remove("active");
+        body.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+      mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+          closeMenu();
+          menuToggle.focus();
+        }
       });
     }
 

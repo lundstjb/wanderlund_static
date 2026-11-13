@@ -21,12 +21,8 @@ import { properties } from "../data/properties";
           comfort, care, and quality.
         </p>
         <div class="hero-actions">
-          <a href="/properties/" class="btn btn-primary"
-            >Browse Properties</a
-          >
-          <a href="/services/" class="btn btn-outline"
-            >Management Services</a
-          >
+          <a href="/properties/" class="btn btn-primary">Find a Stay</a>
+          <a href="/contact/" class="btn btn-light">Manage Your Property</a>
         </div>
       </div>
     </section>
@@ -59,14 +55,20 @@ import { properties } from "../data/properties";
               <li>Local Maintenance & Housekeeping Teams</li>
               <li>Dynamic Pricing for Maximum Revenue</li>
             </ul>
-            <a href="/services/" class="btn btn-primary"
-              >Learn More About Management</a
-            >
+            <div class="service-actions">
+              <a href="/contact/" class="btn btn-primary"
+                >Talk to Us About Your Property</a
+              >
+              <a href="/services/" class="text-link">See what management includes</a>
+            </div>
           </div>
           <div class="service-image">
             <img
-              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800"
-              alt="Model house and house keys on a table"
+              src="/images/knoxville-skyline.jpg"
+              alt="Knoxville skyline at dusk with the Sunsphere"
+              width="800"
+              height="600"
+              loading="lazy"
             />
           </div>
         </div>
@@ -79,19 +81,32 @@ import { properties } from "../data/properties";
 
 <style>
   .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    background: linear-gradient(
+        to top,
+        rgba(24, 18, 12, 0.86) 0%,
+        rgba(24, 18, 12, 0.72) 48%,
+        rgba(24, 18, 12, 0.4) 64%,
+        rgba(24, 18, 12, 0.1) 82%,
+        rgba(24, 18, 12, 0) 100%
+      ),
       url("/images/properties/jackson/EL8A9744.jpg");
     background-size: cover;
     background-position: center;
     height: 90vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    padding-bottom: 5rem;
     color: white;
     text-align: center;
   }
 
   .hero-content {
     max-width: 900px;
+  }
+
+  .hero h1,
+  .hero p {
+    text-shadow: 0 1px 18px rgba(24, 18, 12, 0.45);
   }
 
   .hero h1 {
@@ -102,7 +117,12 @@ import { properties } from "../data/properties";
     color: rgba(255, 255, 255, 0.9);
   }
 
+  .hero :focus-visible {
+    outline-color: #ffffff;
+  }
+
   .hero p {
+    text-wrap: pretty;
     font-size: 1.25rem;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 3.5rem;
@@ -115,6 +135,17 @@ import { properties } from "../data/properties";
     display: flex;
     gap: 1.5rem;
     justify-content: center;
+  }
+
+  .btn-light {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--bg-primary);
+  }
+
+  .btn-light:hover {
+    background: #ffffff;
+    border-color: #ffffff;
   }
 
   .section-header {
@@ -164,12 +195,37 @@ import { properties } from "../data/properties";
   }
 
   .check-list li::before {
-    content: "—";
-    color: var(--accent);
-    font-weight: 300;
+    content: "";
+    flex: none;
+    width: 1.25rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .service-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem 2rem;
+  }
+
+  .text-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 0.4em;
+  }
+
+  .text-link:hover {
+    text-decoration-thickness: 2px;
   }
 
   .service-image img {
+    height: auto;
     border-radius: var(--radius);
     box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
   }
@@ -181,9 +237,19 @@ import { properties } from "../data/properties";
     }
 
     .hero {
-      height: 70vh !important;
-      min-height: 500px !important;
-      padding: 0 1.5rem;
+      height: auto !important;
+      min-height: 70vh !important;
+      padding: 7rem 1.5rem 3rem;
+      background: linear-gradient(
+          to top,
+          rgba(24, 18, 12, 0.88) 0%,
+          rgba(24, 18, 12, 0.78) 60%,
+          rgba(24, 18, 12, 0.55) 85%,
+          rgba(24, 18, 12, 0.35) 100%
+        ),
+        url("/images/properties/jackson/EL8A9744.jpg");
+      background-size: cover;
+      background-position: center;
     }
 
     .hero h1 {
@@ -205,13 +271,6 @@ import { properties } from "../data/properties";
     .property-grid {
       grid-template-columns: 1fr !important;
       gap: 2rem !important;
-    }
-
-    .service-image img {
-      border-radius: 0 !important;
-      width: 100vw !important;
-      max-width: none !important;
-      margin-left: -1.5rem !important;
     }
   }
 
