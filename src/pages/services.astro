@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { managementServiceSchema } from "../lib/schema";
 import {
   TrendingUp,
   LineChart,
@@ -20,8 +21,9 @@ import {
 ---
 
 <Layout
-  title="Management Services"
-  description="Hassle-free property management services for vacation rentals."
+  title="Knoxville Short-Term Rental Property Management"
+  description="Full-service Airbnb and VRBO management for Knoxville, TN owners: listing management, dynamic pricing, guest services, turnover cleaning, inspections, and monthly reporting."
+  jsonLd={managementServiceSchema()}
 >
   <Header />
 
@@ -29,7 +31,7 @@ import {
     <section class="section">
       <div class="container">
         <div class="section-header text-center">
-          <h1>Full-Service Property Management</h1>
+          <h1>Full-Service Short-Term Rental Management in Knoxville</h1>
           <p class="max-w-2xl mx-auto">
             Wanderlund provides full-service short-term rental management for
             furnished residential properties in Knoxville.
@@ -201,7 +203,7 @@ import {
               service provider — we invite you to schedule a call with us.
             </p>
             <div class="cta-actions">
-              <a href="/contact/index.html" class="btn btn-outline"
+              <a href="/contact/" class="btn btn-outline"
                 >Get a Free Consultation</a
               >
             </div>

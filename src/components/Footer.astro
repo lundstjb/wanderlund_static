@@ -1,36 +1,27 @@
----
-import { Instagram, Facebook, Twitter } from "lucide-astro";
----
-
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-info">
         <h3>Wanderlund</h3>
         <p>
-          Premium property management and curated vacation rentals in
-          high-demand destinations.
+          Boutique vacation rentals and full-service short-term rental
+          management in Knoxville, Tennessee.
         </p>
-        <div class="socials">
-          <a href="#"><Instagram size={20} /></a>
-          <a href="#"><Facebook size={20} /></a>
-          <a href="#"><Twitter size={20} /></a>
-        </div>
       </div>
       <div class="footer-links">
         <h4>Navigation</h4>
         <ul>
           <li>
-            <a href="/properties/index.html">Properties</a>
+            <a href="/properties/">Properties</a>
           </li>
           <li>
-            <a href="/services/index.html">Management Services</a>
+            <a href="/services/">Management Services</a>
           </li>
           <li>
-            <a href="/about/index.html">About Us</a>
+            <a href="/about/">About Us</a>
           </li>
           <li>
-            <a href="/contact/index.html">Contact</a>
+            <a href="/contact/">Contact</a>
           </li>
         </ul>
       </div>
@@ -74,21 +65,6 @@ import { Instagram, Facebook, Twitter } from "lucide-astro";
     max-width: 360px;
     margin-bottom: 2rem;
     line-height: 1.8;
-  }
-
-  .socials {
-    display: flex;
-    gap: 1.5rem;
-    color: var(--text-secondary);
-  }
-
-  .socials a {
-    transition: all 0.3s ease;
-  }
-
-  .socials a:hover {
-    color: var(--accent);
-    transform: translateY(-3px);
   }
 
   .footer h4 {

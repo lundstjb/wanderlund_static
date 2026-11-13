@@ -10,7 +10,7 @@ const { property } = Astro.props;
 ---
 
 <a
-  href={property.isActive ? `/properties/${property.slug}/index.html` : ""}
+  href={property.isActive ? `/properties/${property.slug}/` : ""}
   class="card-link"
 >
   <div class="card">
