@@ -1,0 +1,106 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Privacy Policy"
+  description="How Wanderlund handles information from visitors to wanderlund.com, including contact form messages and website analytics."
+>
+  <Header />
+
+  <main>
+    <section class="section">
+      <div class="container prose">
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated November 18, 2026</p>
+
+        <h2>Who we are</h2>
+        <p>
+          Wanderlund is a vacation rental and short-term rental management
+          company in Knoxville, Tennessee. This policy covers wanderlund.com.
+        </p>
+
+        <h2>What we collect</h2>
+        <p>
+          <strong>Contact form.</strong> When you send us a message, we receive
+          your name, email address, and message. The form is delivered to our
+          inbox through Formspree.
+        </p>
+        <p>
+          <strong>Analytics.</strong> We use Google Analytics to see which pages
+          people visit, how they found us, and their general location and device
+          type. It uses cookies. It does not give us your name or email address.
+        </p>
+        <p>
+          <strong>Booking and search.</strong> Availability search and direct
+          booking run inside a widget provided by Hospitable. Guest and payment
+          details you enter there go to Hospitable, not to this website, and are
+          covered by Hospitable's privacy policy. Links to Airbnb and VRBO are
+          covered by those sites' policies.
+        </p>
+        <p>
+          <strong>Server logs.</strong> Our web host keeps standard request logs,
+          such as IP address, browser type, and the page requested. We use them
+          for security and to see which search engines visit the site.
+        </p>
+
+        <h2>How we use it</h2>
+        <p>
+          We use this information to answer your questions and to understand
+          which pages and searches lead to bookings so we can improve the site.
+          We do not sell your information or use it for advertising.
+        </p>
+
+        <h2>Your choices</h2>
+        <p>
+          You can block or delete cookies in your browser settings. To stop
+          Google Analytics from recording your visits on any site, install
+          Google's <a href="https://tools.google.com/dlpage/gaoptout"
+            >Analytics opt-out browser add-on</a
+          >. To ask us to delete a message you sent, contact us below.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about this policy: <a
+            href="mailto:wanderlundventures@gmail.com"
+            >wanderlundventures@gmail.com</a
+          > or <a href="tel:+18657121490">+1 (865) 712-1490</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .prose {
+    max-width: 42rem;
+  }
+
+  .prose h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .updated {
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+  }
+
+  .prose h2 {
+    margin: 2.5rem 0 1rem;
+  }
+
+  .prose p {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+
+  .prose a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>

@@ -67,10 +67,30 @@ describe("vacationRentalSchema", () => {
       latitude: 35.97,
       longitude: -83.92,
     });
+    expect(s.latitude).toBe(35.97);
+    expect(s.longitude).toBe(-83.92);
   });
 
   it("omits geo when coordinates are not set", () => {
-    expect(vacationRentalSchema(base)).not.toHaveProperty("geo");
+    const s = vacationRentalSchema(base);
+    expect(s).not.toHaveProperty("geo");
+    expect(s).not.toHaveProperty("latitude");
+  });
+
+  it("adds check-in and check-out times and the brand", () => {
+    const s = vacationRentalSchema(base) as any;
+    expect(s.checkinTime).toBe("16:00:00");
+    expect(s.checkoutTime).toBe("10:00:00");
+    expect(s.brand).toEqual({ "@type": "Brand", name: "Wanderlund" });
+  });
+
+  it("keeps third-party review ratings out of the markup", () => {
+    const s = vacationRentalSchema({
+      ...base,
+      reviews: { count: 10, average: 4.9, asOf: "November 2026", excerpts: [] },
+    });
+    expect(s).not.toHaveProperty("aggregateRating");
+    expect(s).not.toHaveProperty("review");
   });
 });
 

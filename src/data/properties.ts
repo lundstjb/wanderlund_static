@@ -18,7 +18,29 @@ export interface Property {
   hospitablePropertyId?: string;
   /** Neighborhood-level coordinates, rounded to 2 decimals (~1 km). Never the exact address. */
   geo?: { latitude: number; longitude: number };
+  /**
+   * Guest review summary and hand-picked excerpts from Hospitable. Shown as
+   * page text only: Google's guidelines bar marking up ratings collected on
+   * other sites (Airbnb, VRBO), so these stay out of the JSON-LD.
+   */
+  reviews?: PropertyReviews;
   isActive: boolean;
+}
+
+export interface ReviewExcerpt {
+  text: string;
+  platform: "Airbnb" | "VRBO";
+  /** Month of the review, e.g. "October 2026". */
+  date: string;
+}
+
+export interface PropertyReviews {
+  count: number;
+  /** Average star rating out of 5. */
+  average: number;
+  /** When count and average were pulled, e.g. "November 2026". */
+  asOf: string;
+  excerpts: ReviewExcerpt[];
 }
 
 export const properties: Property[] = [
@@ -80,6 +102,29 @@ export const properties: Property[] = [
     ],
     airbnbUrl: "https://www.airbnb.com/rooms/1421115194865410926",
     hospitablePropertyId: "2351088",
+    geo: { latitude: 35.97, longitude: -83.92 },
+    reviews: {
+      count: 150,
+      average: 4.96,
+      asOf: "November 2026",
+      excerpts: [
+        {
+          text: "Location is outstanding for access to the old city and downtown. Apartment is well appointed/stocked, clean and easy to access. I would recommend it to anyone interested in exploring Knoxville’s attractions and dining/cocktail/entertainment options.",
+          platform: "VRBO",
+          date: "November 2026",
+        },
+        {
+          text: "Location was perfect for our stay. Being able to walk to Market Square and all the restaurants was great. We spent a lot of time at UT during the day and getting back and forth was really easy. We will stay again if we are back in the area.",
+          platform: "Airbnb",
+          date: "August 2026",
+        },
+        {
+          text: "Great place and a great host. Location in a fun part of the city with easy walking to the market square and other attractions. Short bus or rideshare rides over to campus. Condo has everything you need, including things you wouldn't have thought of. Highly recommended.",
+          platform: "Airbnb",
+          date: "October 2026",
+        },
+      ],
+    },
   },
   {
     id: "2",
@@ -171,6 +216,29 @@ export const properties: Property[] = [
     ],
     airbnbUrl: "https://www.airbnb.com/rooms/1618479981136128375",
     hospitablePropertyId: "2351089",
+    geo: { latitude: 35.97, longitude: -83.92 },
+    reviews: {
+      count: 65,
+      average: 5.0,
+      asOf: "November 2026",
+      excerpts: [
+        {
+          text: "We really loved this place! Plenty of room to spread out, and the two bedrooms with king beds were great. We hung out in the living room and enjoyed some foosball. Excellent location, walkable to all kinds of great restaurants and activities.",
+          platform: "Airbnb",
+          date: "June 2026",
+        },
+        {
+          text: "Amazing stay! So spacious and the rooms were very cozy. We benefited so much from the proximity to the stadium. Would definitely recommend. 10/10",
+          platform: "Airbnb",
+          date: "August 2026",
+        },
+        {
+          text: "We absolutely loved this place! Short stay but still got to do a lot because of how close we were to down town. Clean, cozy and super peaceful. Would absolutely stay here again!!",
+          platform: "Airbnb",
+          date: "September 2026",
+        },
+      ],
+    },
   },
   {
     id: "3",
@@ -267,6 +335,29 @@ export const properties: Property[] = [
     amenities: ["Free Parking", "Wi-Fi", "Full Kitchen", "Smart TVs"],
     airbnbUrl: "https://www.airbnb.com/rooms/1639502685847073970",
     hospitablePropertyId: "2351090",
+    geo: { latitude: 35.96, longitude: -83.9 },
+    reviews: {
+      count: 49,
+      average: 5.0,
+      asOf: "November 2026",
+      excerpts: [
+        {
+          text: "This was the perfect spot for our Knoxville trip! 5 minutes from Neyland Stadium and downtown. Extremely clean, and all around beautiful air bnb. Would 100% recommend!",
+          platform: "Airbnb",
+          date: "May 2026",
+        },
+        {
+          text: "Loved the idea of having our own place versus a hotel. Loved the location. Close enough to campus but far enough to feel like we had a little get away. Love the SoKno area. Great little restaurants and coffee shop",
+          platform: "Airbnb",
+          date: "November 2026",
+        },
+        {
+          text: "This place was so pretty. It's not immediately walkable, but it's only a half a mile from a lot of great places to eat and hang out. It's quiet, comfortable, and the host has great recs! I wish every place was like this one.",
+          platform: "Airbnb",
+          date: "May 2026",
+        },
+      ],
+    },
   },
   {
     id: "4",
@@ -280,7 +371,28 @@ export const properties: Property[] = [
     beds: 2,
     bathrooms: 2,
     image: "/images/properties/lilys_landing/hero.png",
-    images: ["/images/properties/lilys_landing/hero.png"],
+    images: [
+      "/images/properties/lilys_landing/hero.png",
+      "/images/properties/lilys_landing/02.jpg",
+      "/images/properties/lilys_landing/03.jpg",
+      "/images/properties/lilys_landing/04.jpg",
+      "/images/properties/lilys_landing/05.jpg",
+      "/images/properties/lilys_landing/06.jpg",
+      "/images/properties/lilys_landing/07.jpg",
+      "/images/properties/lilys_landing/08.jpg",
+      "/images/properties/lilys_landing/09.jpg",
+      "/images/properties/lilys_landing/10.jpg",
+      "/images/properties/lilys_landing/11.jpg",
+      "/images/properties/lilys_landing/12.jpg",
+      "/images/properties/lilys_landing/13.jpg",
+      "/images/properties/lilys_landing/14.jpg",
+      "/images/properties/lilys_landing/15.jpg",
+      "/images/properties/lilys_landing/16.jpg",
+      "/images/properties/lilys_landing/17.jpg",
+      "/images/properties/lilys_landing/18.jpg",
+      "/images/properties/lilys_landing/19.jpg",
+      "/images/properties/lilys_landing/20.jpg",
+    ],
     description:
       "Experience the perfect blend of historic charm & modern luxury at Lily's Landing. A spacious, 2bd/2ba, 1st floor condo in the iconic White Lily Building in the Old City. Perfectly suited for couples, friends, wedding guests, or small families, this unit offers the ultimate downtown Knoxville convenience with NO stairs, remote work set-up, and dedicated parking. You are just moments away from the new Smokies stadium, the Mill & Mine, Market Square, Jackson Terminal and UT sporting events/campus.",
     amenities: [
@@ -295,5 +407,28 @@ export const properties: Property[] = [
     ],
     airbnbUrl: "https://www.airbnb.com/rooms/1735870827601562766",
     hospitablePropertyId: "2351092",
+    geo: { latitude: 35.97, longitude: -83.92 },
+    reviews: {
+      count: 39,
+      average: 4.97,
+      asOf: "November 2026",
+      excerpts: [
+        {
+          text: "Wonderful space! The high ceilings really made it feel spacious. The brick walls really absorbed outside noise. Great amenities and very comfortable.",
+          platform: "Airbnb",
+          date: "October 2026",
+        },
+        {
+          text: "Beautiful space, super convenient to the old city and downtown. Very clean, responsive host, easy check in and check out. We enjoyed our stay and would go back!",
+          platform: "Airbnb",
+          date: "August 2026",
+        },
+        {
+          text: "Clean and comfortable place perfectly located near everything you could need!",
+          platform: "Airbnb",
+          date: "November 2026",
+        },
+      ],
+    },
   },
 ];

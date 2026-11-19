@@ -7,6 +7,7 @@ import BookingWidget from "../../components/BookingWidget.astro";
 import { properties } from "../../data/properties";
 import { Users, Bed, Bath, Check } from "lucide-astro";
 import { vacationRentalSchema } from "../../lib/schema";
+import { analyticsItem } from "../../lib/analytics";
 
 export async function getStaticPaths() {
   return properties.map((property) => ({
@@ -23,6 +24,7 @@ const { property } = Astro.props;
   description={property.description}
   image={property.image}
   jsonLd={vacationRentalSchema(property)}
+  analyticsItem={analyticsItem(property)}
 >
   <Header />
 
@@ -64,6 +66,27 @@ const { property } = Astro.props;
               }
             </div>
           </div>
+
+          {
+            property.reviews && (
+              <div class="reviews-section">
+                <h2>What guests say</h2>
+                <p class="review-summary">
+                  {property.reviews.average} out of 5 from{" "}
+                  {property.reviews.count} guest reviews, as of{" "}
+                  {property.reviews.asOf}.
+                </p>
+                {property.reviews.excerpts.map((review) => (
+                  <blockquote class="review">
+                    <p>&ldquo;{review.text}&rdquo;</p>
+                    <cite>
+                      {review.platform} guest, {review.date}
+                    </cite>
+                  </blockquote>
+                ))}
+              </div>
+            )
+          }
         </div>
 
         <aside class="booking-card" id="book">
@@ -167,7 +190,8 @@ const { property } = Astro.props;
   }
 
   .description h2,
-  .amenities-section h2 {
+  .amenities-section h2,
+  .reviews-section h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
     font-family: var(--font-serif);
@@ -177,6 +201,28 @@ const { property } = Astro.props;
   .description p {
     font-size: 1.15rem;
     line-height: 1.8;
+  }
+
+  .reviews-section {
+    margin-top: 5rem;
+  }
+
+  .review-summary {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .review {
+    margin: 0 0 2rem;
+  }
+
+  .review p {
+    margin-bottom: 0.5rem;
+  }
+
+  .review cite {
+    font-style: normal;
+    color: var(--text-secondary);
   }
 
   .amenities-grid {
