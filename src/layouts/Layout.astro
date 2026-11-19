@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { absoluteUrl, jsonLdString, organizationSchema } from "../lib/schema";
+import { GA_MEASUREMENT_ID, PRODUCTION_HOST, type AnalyticsItem } from "../lib/analytics";
 
 interface Props {
   title: string;
@@ -9,6 +10,8 @@ interface Props {
   image?: string;
   /** Page-specific JSON-LD, added after the organization block. */
   jsonLd?: Record<string, unknown>;
+  /** Property shown on this page, for GA4 view_item and begin_checkout events. */
+  analyticsItem?: AnalyticsItem;
 }
 
 const {
@@ -16,6 +19,7 @@ const {
   description = "Boutique vacation rentals and short-term rental property management in Knoxville, TN.",
   image,
   jsonLd,
+  analyticsItem,
 } = Astro.props;
 
 const fullTitle = `${title} | Wanderlund`;
@@ -30,6 +34,20 @@ const schemas = jsonLd ? [organizationSchema(), jsonLd] : [organizationSchema()]
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline define:vars={{ gaId: GA_MEASUREMENT_ID, gaHost: PRODUCTION_HOST }}>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+      if (location.hostname === gaHost) {
+        const tag = document.createElement("script");
+        tag.async = true;
+        tag.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+        document.head.appendChild(tag);
+        window.gtag("js", new Date());
+        window.gtag("config", gaId);
+      }
+    </script>
     <meta name="msvalidate.01" content="5CC3E23E99A765714BF540124305A559" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -49,7 +67,56 @@ const schemas = jsonLd ? [organizationSchema(), jsonLd] : [organizationSchema()]
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body data-analytics-item={analyticsItem && JSON.stringify(analyticsItem)}>
     <slot />
+    <script>
+      import {
+        isAirbnbUrl,
+        itemEventParams,
+        leadMethod,
+        searchTerm,
+        type AnalyticsItem,
+      } from "../lib/analytics";
+
+      type Gtag = (...args: unknown[]) => void;
+      const gtag: Gtag = (...args) => (window as Window & { gtag?: Gtag }).gtag?.(...args);
+      const rawItem = document.body.dataset.analyticsItem;
+      const item: AnalyticsItem | null = rawItem ? JSON.parse(rawItem) : null;
+
+      if (item) gtag("event", "view_item", itemEventParams(item));
+
+      if (location.pathname.startsWith("/search")) {
+        const term = searchTerm(location.search);
+        if (term) gtag("event", "search", { search_term: term });
+      }
+
+      document.addEventListener("click", (event) => {
+        const link = (event.target as Element).closest?.("a[href]") as HTMLAnchorElement | null;
+        if (!link) return;
+        const method = leadMethod(link.getAttribute("href") ?? "");
+        if (method) {
+          gtag("event", "generate_lead", { method });
+        } else if (isAirbnbUrl(link.href)) {
+          gtag("event", "click_airbnb", { link_url: link.href, item_id: item?.item_id });
+        }
+      });
+
+      document.addEventListener("submit", (event) => {
+        if ((event.target as Element).matches(".contact-form")) {
+          gtag("event", "generate_lead", { method: "contact_form" });
+        }
+      });
+
+      // The booking widget is a cross-origin iframe, so the first click into it
+      // shows up only as the window losing focus to that iframe.
+      let checkoutSent = false;
+      window.addEventListener("blur", () => {
+        const focused = document.activeElement;
+        if (checkoutSent || !item || focused?.tagName !== "IFRAME") return;
+        if (!focused.closest(".booking-widget")) return;
+        checkoutSent = true;
+        gtag("event", "begin_checkout", itemEventParams(item));
+      });
+    </script>
   </body>
 </html>

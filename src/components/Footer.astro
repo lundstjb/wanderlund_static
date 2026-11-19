@@ -37,7 +37,10 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} Wanderlund. All rights reserved.</p>
+      <p>
+        &copy; {new Date().getFullYear()} Wanderlund. All rights reserved.
+        <a href="/privacy/">Privacy</a>
+      </p>
     </div>
   </div>
 </footer>
@@ -114,6 +117,12 @@
     color: var(--text-secondary);
     letter-spacing: 0.05em;
     text-transform: uppercase;
+  }
+
+  .footer-bottom a {
+    margin-left: 1.5rem;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
   }
 
   @media (max-width: 768px) {

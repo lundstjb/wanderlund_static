@@ -34,6 +34,10 @@ export function organizationSchema(): JsonLd {
   };
 }
 
+/** Same for every property in Hospitable (4:00 PM in, 10:00 AM out). */
+const CHECKIN_TIME = "16:00:00";
+const CHECKOUT_TIME = "10:00:00";
+
 const MANAGEMENT_SERVICES = [
   "Listing Management",
   "Dynamic Pricing",
@@ -86,8 +90,9 @@ export function vacationRentalSchema(property: Property): JsonLd {
     }));
   }
 
+  // Google's vacation rental markup reads top-level latitude/longitude; geo is kept for other consumers.
   const geo = property.geo
-    ? { geo: { "@type": "GeoCoordinates", ...property.geo } }
+    ? { ...property.geo, geo: { "@type": "GeoCoordinates", ...property.geo } }
     : {};
 
   return {
@@ -102,6 +107,9 @@ export function vacationRentalSchema(property: Property): JsonLd {
     image: property.images.map(absoluteUrl),
     address: KNOXVILLE_ADDRESS,
     priceRange: `From $${property.nightlyFrom}/night`,
+    checkinTime: CHECKIN_TIME,
+    checkoutTime: CHECKOUT_TIME,
+    brand: { "@type": "Brand", name: "Wanderlund" },
     parentOrganization: { "@id": ORG_ID },
     sameAs: [property.airbnbUrl],
     containsPlace: accommodation,
