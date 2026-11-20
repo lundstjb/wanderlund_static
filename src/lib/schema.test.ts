@@ -13,6 +13,7 @@ const base: Property = {
   slug: "test-flat",
   title: "Test Flat",
   location: "Knoxville, TN",
+  propertyType: "Apartment",
   nightlyFrom: 250,
   guests: 6,
   bedrooms: 2,
@@ -35,21 +36,18 @@ describe("vacationRentalSchema", () => {
       "https://www.wanderlund.com/images/b.jpg",
     ]);
     expect(s.containsPlace.numberOfBedrooms).toBe(2);
-    expect(s.containsPlace.occupancy.maxValue).toBe(6);
+    expect(s.containsPlace.occupancy.value).toBe(6);
+    expect(s.containsPlace.bed).toEqual({ "@type": "BedDetails", numberOfBeds: 2 });
     expect(s.containsPlace.amenityFeature).toHaveLength(2);
-    expect(s.makesOffer.priceSpecification.minPrice).toBe(250);
+    expect(s.additionalType).toBe("Apartment");
+    expect(s.priceRange).toBe("From $250/night");
     expect(s.parentOrganization["@id"]).toBe(organizationSchema()["@id"]);
   });
 
-  it("points the offer at the property page when direct booking is set up", () => {
-    const s = vacationRentalSchema({ ...base, hospitablePropertyId: "123" }) as any;
-    expect(s.makesOffer.url).toBe("https://www.wanderlund.com/properties/test-flat/");
+  it("leaves out makesOffer, which Google reads as an invalid lodging offer", () => {
+    const s = vacationRentalSchema({ ...base, hospitablePropertyId: "123" });
+    expect(s).not.toHaveProperty("makesOffer");
     expect(s.sameAs).toEqual(["https://www.airbnb.com/rooms/1"]);
-  });
-
-  it("points the offer at Airbnb when there is no direct booking widget", () => {
-    const s = vacationRentalSchema(base) as any;
-    expect(s.makesOffer.url).toBe("https://www.airbnb.com/rooms/1");
   });
 
   it("omits amenityFeature when there are no amenities", () => {

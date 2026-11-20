@@ -3,6 +3,8 @@ export interface Property {
   slug: string;
   title: string;
   location: string;
+  /** Google vacation rental type. Condos map to Apartment; Google lists no Condo value. */
+  propertyType: "Apartment" | "House";
   /** Lowest nightly rate in USD, before taxes and fees. */
   nightlyFrom: number;
   guests: number;
@@ -50,6 +52,7 @@ export const properties: Property[] = [
     slug: "jackson-flat-old-city-knoxville",
     title: "Jackson Flat Old City Knoxville",
     location: "Knoxville, TN",
+    propertyType: "Apartment",
     nightlyFrom: 250,
     guests: 6,
     bedrooms: 2,
@@ -132,6 +135,7 @@ export const properties: Property[] = [
     slug: "white-lily-old-city-knoxville",
     title: "White Lily Old City Knoxville",
     location: "Knoxville, TN",
+    propertyType: "Apartment",
     nightlyFrom: 180,
     guests: 6,
     bedrooms: 2,
@@ -246,6 +250,7 @@ export const properties: Property[] = [
     slug: "sokno-101",
     title: "SoKno 101 Getaway",
     location: "Knoxville, TN",
+    propertyType: "House",
     nightlyFrom: 180,
     guests: 8,
     bedrooms: 2,
@@ -365,6 +370,7 @@ export const properties: Property[] = [
     slug: "lilys-landing-old-city-knoxville",
     title: "Lily's Landing",
     location: "Knoxville, TN",
+    propertyType: "Apartment",
     nightlyFrom: 200,
     guests: 6,
     bedrooms: 2,
