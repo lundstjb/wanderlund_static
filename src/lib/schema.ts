@@ -80,7 +80,8 @@ export function vacationRentalSchema(property: Property): JsonLd {
     additionalType: "EntirePlace",
     numberOfBedrooms: property.bedrooms,
     numberOfBathroomsTotal: property.bathrooms,
-    occupancy: { "@type": "QuantitativeValue", maxValue: property.guests },
+    occupancy: { "@type": "QuantitativeValue", value: property.guests },
+    bed: { "@type": "BedDetails", numberOfBeds: property.beds },
   };
   if (property.amenities.length > 0) {
     accommodation.amenityFeature = property.amenities.map((name) => ({
@@ -100,6 +101,7 @@ export function vacationRentalSchema(property: Property): JsonLd {
     "@type": "VacationRental",
     ...geo,
     "@id": `${url}#rental`,
+    additionalType: property.propertyType,
     identifier: property.slug,
     name: property.title,
     url,
@@ -113,16 +115,6 @@ export function vacationRentalSchema(property: Property): JsonLd {
     parentOrganization: { "@id": ORG_ID },
     sameAs: [property.airbnbUrl],
     containsPlace: accommodation,
-    makesOffer: {
-      "@type": "Offer",
-      url: property.hospitablePropertyId ? url : property.airbnbUrl,
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        minPrice: property.nightlyFrom,
-        priceCurrency: "USD",
-        unitText: "night",
-      },
-    },
   };
 }
 
